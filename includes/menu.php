@@ -3,10 +3,12 @@ error_reporting(0);
 session_start(); ?>
 
 <head>
+
 	<style>
 
 	</style>
 </head>
+
 <nav class="navbar navbar-expand-lg mb-5 px-4  bg-light navbar-light " id="navbar">
 	<div class="container-fluid">
 		<a class="navbar-brand  fw-bolder mb-2 mb-lg-0 d-flex gap-1 text-decoration-none" href="#">
@@ -18,7 +20,7 @@ session_start(); ?>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
-				<li class="nav-item"><a class="nav-link fw-bold link-active" href="index.php" aria-current="page">Home</a></li>
+				<li class="nav-item"> <span data-feather="file-text" class="bg-danger"></span><a class="nav-link fw-bold link-active" href="index.php" aria-current="page">Home</a></li>
 				<li class="nav-item"><a class="nav-link fw-bold" href="#about" aria-current="page">About</a></li>
 				<li class="nav-item"><a class="nav-link fw-bold" href="services.php" aria-current="page">Service</a></li>
 				<li class="nav-item"><a class="nav-link fw-bold" href="#contact">Contact Us</a></li>
@@ -47,7 +49,7 @@ session_start(); ?>
 					         <ul class="text-small dropdown-menu shadow px-4" aria-labelledby="dropdownUser1">
 					         <form method="POST" action="modules/login-register.php" class="form-inline row gap-2 p-2">
 					         <input class="form-control mr-sm-2" type="email" placeholder="E-mail" aria-label="login" name="email">
-					         <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="login" name="password">
+					         <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="login" name="pass">
 					         <div class="container col"> <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit" name="submit_login">Login</button>
 					         <a class="text-muted" href="modules/login-register.php?register=1">Register</a></div>
 					         </form></ul></div>

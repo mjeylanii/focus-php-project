@@ -88,7 +88,8 @@ error_reporting(0) ?>
 if (isset($_POST['submit_login'])) {
   ////////////////////////////////////////////////////////////////////////////
   $mail = $_POST["email"];
-  $pass = MD5($_POST["password"]);
+  $pass = MD5($_POST["pass"]);
+  echo $mail . $pass;
   ////////////////////////////////////////////////////////////////////////////
   $sql = "SELECT  * FROM users WHERE user_email='$mail' AND user_password ='$pass'";
   $count = $conn->query($sql);
@@ -110,6 +111,10 @@ if (isset($_POST['submit_login'])) {
       $dataArray = $data->fetch(PDO::FETCH_ASSOC); //STORING THE VALUES FROM DATA TO AND ARRAY OF DATA
       $_SESSION['user'] = $dataArray['user_id']; //SETTING THE USER SESSION VALUE TO CORRESPONDING ID
       $_SESSION['type'] = $dataArray['user_type']; //SETTING THE TYPE SESSION VALUE TO CORRESPONDING TYPE
+      $_SESSION['full-name'] = $dataArray['user_name'] . " " . $dataArray['user_surname'];
+      $_SESSION['name'] = $dataArray['user_name'];
+      $_SESSION['email'] = $dataArray['user_email'];
+      $_SESSION['registration'] = $dataArray['registration_date'];
       header('location:http://localhost/focus/index.php'); //DIRECT USER TO ADMIN PAGE
     } else {
       $sql = "SELECT * FROM users WHERE user_email='$mail'"; //SQL CODE TO QUERY COLUMNS FROM THE USERS TABLE
@@ -138,7 +143,7 @@ if (isset($_POST['submit_registration'])) {
   $name = $_POST["name"];
   $surname = $_POST["surname"];
   $mail = $_POST["email"];
-  $spass = MD5($_POST["pass"]);
+  $pass = MD5($_POST["pass"]);
   ////////////////////////////////////////////////////////////////////
   $sql = "SELECT * FROM users WHERE user_email='$mail' "; //A PHP VARIABLE THAT HOLDS SQL CODE TO QUERY THE EMAIL SPECIFIED
   $say = $conn->query($sql); //INVOKING THE QUERY FUNCTION THAT TAKES THE GIVEN SQL QUERY VARIABLE
@@ -148,8 +153,8 @@ if (isset($_POST['submit_registration'])) {
     echo '<script>alert("Mail adresi kayıtlı");</script>';
     header("location:  http://localhost/focus/index.php");
   } else {
-    $sql = "INSERT INTO users (user_id , user_name, user_surname, user_email, user_password, user_type)	
-            VALUES ($id, '$name', '$surname', '$mail','$pass','2')";
+    $sql = "INSERT INTO users (user_id , user_name, user_surname, user_email, user_password, user_type, user_status)	
+            VALUES ($id, '$name', '$surname', '$mail','$pass','2', 'Not Verified')";
     $sqluser = "INSERT INTO user_settings(theme, image_id, user_id) VALUES('light', 1,$id)";
     $conn->exec($sql);
     $conn->exec($sqluser);
