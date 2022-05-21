@@ -1,6 +1,6 @@
 <?php
 define('__BASE__', __DIR__);
-include("config.php");
+require_once 'includes\config.php';
 session_start();
 error_reporting(0);
 $logout = $_GET["logout"];
@@ -35,13 +35,7 @@ if ($logout > 0) {
 	<link rel="stylesheet" type="text/css" href="css/dark-switch.css">
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-	<!-- Scrollbar Custom CSS -->
-	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-	<!-- Tweaks for older IEs-->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootlint@1.1.0/dist/browser/bootlint.min.js">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 	<style>
 		i {
@@ -183,8 +177,8 @@ if ($logout > 0) {
 				have suffered alteration in some form, by injected humour</p>
 		</div>
 	</div>
-	<div class="container-fluid p-3 my-5" id="contact">
-		<div class="container my-5">
+	<div class="container-fluid p-3 mt-5" id="contact">
+		<div class="container ">
 			<div class="row justify-content-center">
 				<div class="col-md-6 py-5">
 					<form class="row g-1 px-3" action="" method="GET">
@@ -218,7 +212,6 @@ if ($logout > 0) {
 		</div>
 	</div>
 	<?php include('includes/footer.php') ?>
-	<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<!-- javascript -->
 	<script src="js/dark-mode-switch.min.js"></script>
 	<script src="js/navbar-switch.js"></script>

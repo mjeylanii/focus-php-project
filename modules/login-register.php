@@ -1,5 +1,5 @@
 <?php
-include('C:\xampp\htdocs\focus\config.php');
+include('C:\xampp\htdocs\focus\includes\config.php');
 session_start(); ?>
 
 <!DOCTYPE html>
@@ -15,8 +15,6 @@ session_start(); ?>
   <title>Login</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <style>
-    * {}
-
     body {
       height: 100vh;
       background-color: #f5f5f5;
@@ -88,16 +86,17 @@ if (isset($_POST['submit_login'])) {
   $mail = $_POST["email"];
   $pass = MD5($_POST["password"]);
   ////////////////////////////////////////////////////////////////////////////
-  $sql = "SELECT  * FROM users WHERE user_email='$mail'";
+  $sql = "SELECT  * FROM users WHERE user_email='$mail' AND user_password ='$pass'";
   $count = $conn->query($sql);
 
   if (($count->rowCount()) <= 0) {
     //WARN USER THAT GIVEN USER DOES NOT EXIST
-    echo '<script>alert("This account does not exist!");</script>'; //WARN USER THAT EMAIL DOES NOT EXIST
-    header('location:http://localhost/focus/index.php'); //REDIRECT USER TO LOGIN/REGISTRATION PAGE
+    //WARN USER THAT EMAIL DOES NOT EXIST
+    //header('location:http://localhost/focus/index.php'); //REDIRECT USER TO LOGIN/REGISTRATION PAGE
+    echo '<script>alert("Wrong email or password");</script>';
   } else {
     ////////////////////////////////////////////////////////////////////////////
-    $sql = "SELECT user_type FROM users WHERE user_email='$mail' AND user_password='$pass'";
+    $sql = "SELECT user_type FROM users WHERE user_email='$mail'";
     $result = $conn->query($sql);
     ///////////////////////////////////////////////////////////////////////////
     /* A CONDITIONAL STATEMENT THAT CHECKS IF THE QUERY RETURN ANYTHING */

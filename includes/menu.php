@@ -20,12 +20,12 @@ session_start(); ?>
 			<ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
 				<li class="nav-item"><a class="nav-link fw-bold link-active" href="index.php" aria-current="page">Home</a></li>
 				<li class="nav-item"><a class="nav-link fw-bold" href="#about" aria-current="page">About</a></li>
-				<li class="nav-item"><a class="nav-link fw-bold" href="#service" aria-current="page">Service</a></li>
+				<li class="nav-item"><a class="nav-link fw-bold" href="services.php" aria-current="page">Service</a></li>
 				<li class="nav-item"><a class="nav-link fw-bold" href="#contact">Contact Us</a></li>
 				<?php
 				if ($_SESSION['user'] != NULL) {
 					echo '<div class="dropcenter text-end">
-					    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle nav-link fw-bold" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">' .
+					    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle nav-link fw-bold btn btn-warning mx-3" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">' .
 						$_SESSION['name'] .
 						'
                         </a>

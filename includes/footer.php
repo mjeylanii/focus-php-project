@@ -1,4 +1,4 @@
-<footer class="py-2 bg-success">
+<footer class="py-2 bg-light">
     <div class="container">
         <div class="container bg-light rounded p-3 my-4">
             <div class="row ">
@@ -55,7 +55,7 @@
                 <form action="" class="input-group mb-3 " method="GET">
                     <input type="email" class="form-control" placeholder="Enter your email" name="subscriber_email" required>
                     <div class="input-group-append">
-                        <button class="btn btn-dark" type="submit"><a class="text-decoration-none text-white " href="">SUBSCRIBE</a></button>
+                        <button class="btn btn-dark" type="submit"><a class="text-decoration-none bg-dark" href="">SUBSCRIBE</a></button>
                     </div>
                 </form>
             </div>

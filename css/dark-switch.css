@@ -19,7 +19,7 @@
   }
   
   [data-theme="dark"] .text-white {
-    background-color: #000 !important;
+   
   }
   [data-theme="dark"] .navbar-light {
     color: white!important;

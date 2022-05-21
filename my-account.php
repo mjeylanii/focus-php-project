@@ -1,7 +1,7 @@
 <?php
 session_start();
 //error_reporting(0);
-include('config.php');
+include('includes/config.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,11 +19,10 @@ include('config.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <title>My Account</title>
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/dark-switch.css">
 </head>
 
 <body class="cnt-home bg-light">
@@ -43,13 +42,13 @@ include('config.php');
                                                                     ?>
             </div>
         </div>
-        <a href="" class="btn text-dark btn-primary mt-3">Change profile picture</a>
+        <a href="" class="btn text-light btn-primary mt-3">Change profile picture</a>
         <hr>
         <h3 class="jumbotron text-dark mt-5 fw-bolder">Account details</h3>
         <center>
-            <table class="table text-light w-50 mb-5 table-striped">
+            <table class="table bg-light w-50 mb-5 table-striped">
                 <thead class="text-center">
-                    <tr class="text-center text-dark">
+                    <tr class="text-center ">
                         <th scope="col">User ID</th>
                         <th scope="col">Name</th>
                         <th scope="col">E-mail</th>
@@ -73,7 +72,7 @@ include('config.php');
         <br>
         <h3 class="jumbotron text-dark mt-5 fw-bolder">Registered services</h3>
         <center>
-            <table class="table text-dark w-50 table-striped ">
+            <table class="table w-50 bg-light table-striped ">
                 <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -84,7 +83,7 @@ include('config.php');
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="text-center" colspan="100%"><a href="" class="btn btn-light"><i class="bi bi-plus"></i></a></td>
+                        <td class="text-center" colspan="100%"><a href="services.php" class="btn btn-light"><i class="bi bi-plus"></i></a></td>
                     </tr>
                 </tbody>
             </table>
@@ -100,7 +99,6 @@ include('config.php');
                         <th scope="col">Adress</th>
                         <th scope="col">Card number</th>
                     </tr>
-
                 </thead>
                 <tbody>
                     <tr>
@@ -111,6 +109,8 @@ include('config.php');
         </center>
         <!-- ============================================== CONTAINER: END ============================================== -->
     </div>
+    <script src="js/dark-mode-switch.min.js"></script>
+    <script src="js/navbar-switch.js"></script>
 </body>
 
 </html>
