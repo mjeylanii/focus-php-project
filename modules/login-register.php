@@ -1,6 +1,7 @@
 <?php
 include('C:\xampp\htdocs\focus\includes\config.php');
-session_start(); ?>
+session_start();
+error_reporting(0) ?>
 
 <!DOCTYPE html>
 <html>
@@ -30,6 +31,9 @@ session_start(); ?>
   </nav>
   <?php
   $register = $_GET["register"];
+  if ($register == NULL) {
+    $register = 1;
+  }
   if ($register > 0) {
     echo '<div class="form-register d-flex flex-column justify-content-center">
         <img class="img-fluid mx-auto bg-light" src="logo.png" alt="logo" width="72" height="54">
