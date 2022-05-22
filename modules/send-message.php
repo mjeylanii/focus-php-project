@@ -9,7 +9,7 @@ $msg = $_GET["msg"];
 
 ////////////////////////////////////////////////////////////////////////////////
 if (!empty($msg)) {
-    $sql = "INSERT INTO messages(message_name, message_email, message_phone, message_txt) VALUES('$name', '$email', '$phone', '$msg')";
+    $sql = "INSERT INTO messages(message_name, message_email, message_phone, message_txt, message_status) VALUES('$name', '$email', $phone, '$msg', 'Not Read')";
     $conn->query($sql);
     echo '<script>alert("Message sent successfuly");</script>';
     echo '<meta http-equiv="refresh" content="0;URL=index.php">';

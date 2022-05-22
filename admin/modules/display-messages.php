@@ -16,7 +16,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add product</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Reply</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -38,7 +38,8 @@
                             <span class="input-group-text" id="addon-wrapping"><i class="bi bi-file-text-fill"></i></span>
                             <input type="text" name="desc" class="form-control" placeholder="Product description" aria-label="description" aria-describedby="addon-wrapping" required>
                         </div>
-                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Add</button>
+                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Send</button>
+                        <button type="reset" class="btn btn-danger" data-bs-dismiss="modal">Reset</button>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -54,43 +55,29 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Detail</th>
-                    <th scope="col">Update Details</th>
-                    <th scope="col">Delete product</th>
-
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Phone#</th>
+                    <th scope="col">Date-Time</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Delete</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                $sql = $conn->query("SELECT * FROM products");
-
-                while ($products = $sql->fetch(PDO::FETCH_ASSOC)) {
+                $sql = $conn->query("SELECT * FROM messages");
+                while ($messages = $sql->fetch(PDO::FETCH_ASSOC)) {
                     echo '
                     <tr class="">
-                         <td  class="align-middle">' . $products['product_id'] . '</td>' .
-                        '<td  class="align-middle">' . $products['product_name'] . '</td>' .
-                        '<td  class="align-middle">$'. $products['product_price'] . '</td>' .
-                        '<td  class="align-middle">' . $products['product_details'] . '</td>' .
-                        '<td><a class="btn btn-secondary" href="modules/update-product.php?productId="' . $products['product_id'] . '</a><span data-feather="edit"></span></td>' .
-                        '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $products["product_id"] . '"><span data-feather="trash-2"></span></a></td>';
+                         <td  class="align-middle">' . $messages['message_id'] . '</td>' .
+                        '<td  class="align-middle">' . $messages['message_name'] . '</td>' .
+                        '<td  class="align-middle">' . $messages['message_email'] . '</td>' .
+                        '<td  class="align-middle">' . $messages['message_phone'] . '</td>' .
+                        '<td  class="align-middle">' . $messages['message_date'] . '</td>' .
+                        '<td class="jquery" class="align-middle">' . $messages['message_status'] . '</td>' .
+                        '<td><a class="btn btn-secondary" href="modules/update-product.php?productId="' . $messages['message_txt'] . '</a><span data-feather="eye"></span></td>' .
+                        '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $messages["message_id"] . '"><span data-feather="trash-2"></span></a></td>';
                 } ?>
             </tbody>
         </table>
-
 </main>
-<?php
-if (isset($_POST['id'])) {
-    $id = @$_POST['id'];
-    $name = @$_POST['name'];
-    $price = @$_POST['price'];
-    $desc = @$_POST['desc'];
-    $sql = "INSERT INTO products(product_id, product_name, product_price, product_details) VALUES($id, :name, $price, :desc)";
-    $data = [
-        'name' => $name,
-        'desc' => $desc
-    ];
-    $stmt = $conn->prepare($sql)->execute($data);
-} else {
-}
-?>

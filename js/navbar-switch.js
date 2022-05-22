@@ -17,7 +17,6 @@
         moon.addClass("d-none");
         sun.removeClass("d-none");
         navbar.removeClass("navbar-dark").addClass("navbar-light");
-        console.log("unchecked");
     }
     $(darkSwitch).on('change', function() {
         if (this.checked) {
@@ -29,7 +28,6 @@
            moon.addClass("d-none");
            sun.removeClass("d-none");
            navbar.removeClass("navbar-dark").addClass("navbar-light");
-           console.log("unchecked");
         }
     });
 

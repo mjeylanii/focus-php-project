@@ -184,11 +184,11 @@ if ($logout > 0) {
 				<div class="col-md-6 py-5">
 					<form class="row g-1 px-3" action="" method="GET">
 						<div class="input-group ">
-							<span class="input-group-text " id="basic-addon1">Name&nbsp;&nbsp;</span>
+							<span class="input-group-text " id="basic-addon1">Name&nbsp;&nbsp;&nbsp;</span>
 							<input type="text" class="form-control" placeholder="Name" name="name">
 						</div>
 						<div class="input-group col-md-12">
-							<span class="input-group-text" id="basic-addon1">Email&nbsp;&nbsp;&nbsp;</span>
+							<span class="input-group-text" id="basic-addon1">Email&nbsp;&nbsp;&nbsp;&nbsp;</span>
 							<input type="text" class="form-control" placeholder="Email" name="email">
 						</div>
 						<div class="input-group col-md-12">
@@ -223,7 +223,7 @@ if ($logout > 0) {
 </html>
 <?php
 if (isset($_GET['send_msg'])) {
-	require('messages.php');
+	require('modules/send-message.php');
 }
 if (isset($_GET['subscriber_email'])) {
 	require_once('subscribe.php');

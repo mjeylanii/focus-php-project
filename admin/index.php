@@ -72,9 +72,10 @@ include('modules/config.php');
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="index.php?selection=6">
+                            <a class="nav-link" href="index.php?selection=5">
                                 <span data-feather="inbox"></span>
                                 Messages
+                                <span id="newMessage" class="badge bg-secondary">0</span>
                             </a>
                         </li>
                     </ul>
@@ -144,7 +145,7 @@ include('modules/config.php');
             'aria-hidden': 'true'
         })
     </script>
-
+    <script src="js/get-emails.js"></script>
 </body>
 
 </html>
