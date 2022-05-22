@@ -27,7 +27,7 @@ window.addEventListener("load", function () {
  * 'data-theme' attribute will not be set.
  * @return {void}
  */
-/*function initTheme() {
+  function initTheme() {
   var darkThemeSelected =
     localStorage.getItem("darkSwitch") !== null &&
     localStorage.getItem("darkSwitch") === "dark";
@@ -35,8 +35,7 @@ window.addEventListener("load", function () {
   darkThemeSelected
     ? document.body.setAttribute("data-theme", "dark")
     : document.body.removeAttribute("data-theme");
-    console.log("hello world 1");
-}*/
+}
 
 /**
  * Summary: resetTheme checks if the switch is 'on' or 'off' and if it is toggled

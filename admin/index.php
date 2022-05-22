@@ -73,8 +73,8 @@ include('modules/config.php');
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="index.php?selection=6">
-                                <span data-feather="layers"></span>
-                                Integrations
+                                <span data-feather="inbox"></span>
+                                Messages
                             </a>
                         </li>
                     </ul>
@@ -139,7 +139,12 @@ include('modules/config.php');
     }
     ?>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
-    </div>
+    <script>
+        feather.replace({
+            'aria-hidden': 'true'
+        })
+    </script>
+
 </body>
 
 </html>

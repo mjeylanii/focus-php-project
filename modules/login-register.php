@@ -154,7 +154,7 @@ if (isset($_POST['submit_registration'])) {
     header("location:  http://localhost/focus/index.php");
   } else {
     $sql = "INSERT INTO users (user_id , user_name, user_surname, user_email, user_password, user_type, user_status)	
-            VALUES ($id, '$name', '$surname', '$mail','$pass','2', 'Not Verified')";
+            VALUES ($id, '$name', '$surname', '$mail','$pass','2', 'NOT VERIFIED')";
     $sqluser = "INSERT INTO user_settings(theme, image_id, user_id) VALUES('light', 1,$id)";
     $conn->exec($sql);
     $conn->exec($sqluser);

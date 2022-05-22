@@ -23,18 +23,30 @@ $sql = $conn->query("SELECT * FROM users WHERE user_type='2'");
                 while ($userData = $sql->fetch(PDO::FETCH_ASSOC)) {
                     echo '
                     <tr class="">
-                    <td>' . $userData['user_id'] . '</td>' .
-                        '<td>' . $userData['user_name'] . '</td>' .
-                        '<td>' . $userData['user_surname'] . '</td>' .
-                        '<td>' . $userData['user_email'] . '</td>' .
-                        '<td>' . $userData['registration_date'] . '</td>' .
-                        '<td>' . $userData['user_status'] . '</td>' .
-                        '<td>' . '<a class="btn btn-success text-light" href="modules/delete-verify-users.php?delete=0&id=' . $userData["user_id"] . '">Verify</a>' .
-                        '<a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $userData["user_id"] . '">Delete</a>' . '</td>' .
-                        '</tr>';
+                         <td  class="align-middle">' . $userData['user_id'] . '</td>' .
+                        '<td  class="align-middle">' . $userData['user_name'] . '</td>' .
+                        '<td  class="align-middle">' . $userData['user_surname'] . '</td>' .
+                        '<td  class="align-middle">' . $userData['user_email'] . '</td>' .
+                        '<td  class="align-middle">' . $userData['registration_date'] . '</td>' .
+                        '<td  class="align-middle">' . $userData['user_status'] . '</td>';
+                    if ($userData['user_status'] == 'VERIFIED') {
+                        echo
+                        '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $userData["user_id"] . '"><span data-feather="trash-2"></span></a>' . '</td>' .
+                            '</tr>';
+                    } else {
+                        echo  '<td><a class="btn btn-success text-light" href="modules/delete-verify-users.php?delete=0&id=' . $userData["user_id"] . '"><span data-feather="check-circle"></span>
+                               </a><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $userData["user_id"] . '"><span data-feather="trash-2"></span></a>' .
+                            '</td></td>' .
+                            '<td></tr>';
+                    }
                 }
                 ?>
             </tbody>
         </table>
     </div>
+    <script>
+        feather.replace({
+            'aria-hidden': 'true'
+        })
+    </script>
 </main>

@@ -3,8 +3,6 @@
  * Copyright 2021 C.Oliff
  * Licensed under MIT (https://github.com/coliff/dark-mode-switch/blob/main/LICENSE)
  */
-var sun = document.getElementById("sun");
-var moon = document.getElementById("moon");
 var navbar = document.getElementById("navbar");
 var darkSwitch = document.getElementById("darkSwitch");
 window.addEventListener("load", function () {
@@ -27,16 +25,19 @@ window.addEventListener("load", function () {
  * 'data-theme' attribute will not be set.
  * @return {void}
  */
-/*function initTheme() {
+function initTheme() {
   var darkThemeSelected =
     localStorage.getItem("darkSwitch") !== null &&
     localStorage.getItem("darkSwitch") === "dark";
-  darkSwitch.checked = darkThemeSelected;
-  darkThemeSelected
-    ? document.body.setAttribute("data-theme", "dark")
-    : document.body.removeAttribute("data-theme");
-    console.log("hello world 1");
-}*/
+    darkSwitch.checked = darkThemeSelected;
+  if(darkThemeSelected)
+   {     
+        document.body.setAttribute("data-theme", "dark"); 
+    
+  }else{
+    document.body.removeAttribute("data-theme");
+  }
+}
 
 /**
  * Summary: resetTheme checks if the switch is 'on' or 'off' and if it is toggled
@@ -54,3 +55,4 @@ function resetTheme() {
     localStorage.removeItem("darkSwitch");
   }
 }
+feather.replace({ 'aria-hidden': 'true' })

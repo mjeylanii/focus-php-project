@@ -3,7 +3,10 @@
         <h1 class="h2">Products</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group me-2">
-                <button type="button" class="btn btn-sm btn-outline-secondary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add product</button>
+                <button style="cursor:cell;" type="button" class="btn btn-sm btn-outline-secondary mx-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Add product</button>
+                <a style="font-size: 1.5rem; cursor:pointer;" onClick="window.location.reload();" class="link">
+                    <span data-feather="refresh-ccw">
+                    </span></a>
             </div>
         </div>
     </div>
@@ -13,7 +16,7 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Add product</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -45,7 +48,35 @@
         </div>
     </div>
     <!--Modal end-->
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Detail</th>
+                    <th scope="col">Update Details</th>
+                    <th scope="col">Delete product</th>
 
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $sql = $conn->query("SELECT * FROM products");
+
+                while ($products = $sql->fetch(PDO::FETCH_ASSOC)) {
+                    echo '
+                    <tr class="">
+                         <td  class="align-middle">' . $products['product_id'] . '</td>' .
+                        '<td  class="align-middle">' . $products['product_name'] . '</td>' .
+                        '<td  class="align-middle">$' . $products['product_price'] . '</td>' .
+                        '<td  class="align-middle">' . $products['product_details'] . '</td>' .
+                        '<td><a class="btn btn-secondary" href="modules/update-product.php?productId="' . $products['product_id'] . '</a><span data-feather="edit"></span></td>' .
+                        '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $products["product_id"] . '"><span data-feather="trash-2"></span></a></td>';
+                } ?>
+            </tbody>
+        </table>
 
 </main>
 <?php
@@ -54,17 +85,12 @@ if (isset($_POST['id'])) {
     $name = @$_POST['name'];
     $price = @$_POST['price'];
     $desc = @$_POST['desc'];
+    $sql = "INSERT INTO products(product_id, product_name, product_price, product_details) VALUES($id, :name, $price, :desc)";
     $data = [
-        $id,
         'name' => $name,
-        $price,
         'desc' => $desc
     ];
-    echo '<script> alert("' . '$data[0]' . '")</script;';
-    $sql = "INSERT INTO products(product_id, product_name, product_price, product_details) VALUES(:id, :name, :price, :desc)";
-    $stmt = $conn->prepare($sql);
-    $stmt->exec($sql);
-    echo '<script>alert("Success!");</script>';
+    $stmt = $conn->prepare($sql)->execute($data);
 } else {
 }
 ?>

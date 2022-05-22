@@ -40,7 +40,7 @@
                 <h5 class="useful_text">PRODUCT</h5>
                 <div class="contaienr">
                     <ul class="nav flex-column">
-                        <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#"><img src="images/bullet-icon.png" class="footer_menu">Webhosting</a></li>
+                        <li class="nav-item mb-2"><a class="nav-link p-0 text-muted text-body" href="#"><img src="images/bullet-icon.png" class="footer_menu">Webhosting</a></li>
                         <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#"><img src="images/bullet-icon.png" class="nav-item mb-2">Reseller Hosting</a></li>
                         <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#"><img src="images/bullet-icon.png" class="nav-item mb-2">VPS Hosting</a></li>
                         <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="#"><img src="images/bullet-icon.png" class="nav-item mb-2">Wordpress Hosting</a></li>

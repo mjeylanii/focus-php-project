@@ -22,6 +22,7 @@ session_start();
     <link rel="stylesheet" type="text/css" href="css/dark-switch.css">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -36,6 +37,12 @@ session_start();
                 font-size: 3.5rem;
             }
         }
+
+        .feather {
+            width: 24px;
+            height: 24px;
+            vertical-align: text-center;
+        }
     </style>
 </head>
 
@@ -46,120 +53,118 @@ session_start();
         <main>
             <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
                 <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card mb-4 rounded-3 shadow-sm bg-light">
                         <div class="card-header py-3">
-                            <h4 class="my-0 fw-normal">7 day trial</h4>
+                            <h4 class="my-0 fw-normal">Standard</h4>
                         </div>
-                        <div class="card-body">
-                            <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
+                        <div class="card-body ">
+                            <h1 class="card-title pricing-card-title">$5<small class="text-muted fw-light bg-light">/mo</small></h1>
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>10 users included</li>
                                 <li>2 GB of storage</li>
                                 <li>Email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <a href="" class="w-100 btn btn-lg btn-outline-primary">Start your trial</a>
+                            <a href="" class="w-100 btn btn-lg btn-success">Add to cart</a>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card mb-4 rounded-3 shadow-sm bg-light">
                         <div class="card-header py-3">
                             <h4 class="my-0 fw-normal">Pro</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
+                            <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light bg-light">/mo</small></h1>
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>20 users included</li>
                                 <li>10 GB of storage</li>
                                 <li>Priority email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+                            <button type="button" class="w-100 btn btn-lg btn-success">Add to cart </button>
                         </div>
                     </div>
                 </div>
                 <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                        <div class="card-header py-3 text-white bg-primary border-primary">
+                    <div class="card mb-4 rounded-3 shadow-sm bg-light">
+                        <div class="card-header py-3 text-white bg-success border-success">
                             <h4 class="my-0 fw-normal">Enterprise</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
+                            <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light bg-light">/mo</small></h1>
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>30 users included</li>
                                 <li>15 GB of storage</li>
                                 <li>Phone and email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+                            <button type="button" class="w-100 btn btn-lg btn-success">Contact us</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="container py-3">
-                <main>
-                    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm">
-                                <div class="card-header py-3">
-                                    <h4 class="my-0 fw-normal">7 day trial</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$0<small class="text-muted fw-light">/mo</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>10 users included</li>
-                                        <li>2 GB of storage</li>
-                                        <li>Email support</li>
-                                        <li>Help center access</li>
-                                    </ul>
-                                    <a href="" class="w-100 btn btn-lg btn-outline-primary">Start your trial</a>
-                                </div>
+
+                <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm bg-light">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Extra 40gb bandwidth</h4>
                             </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm">
-                                <div class="card-header py-3">
-                                    <h4 class="my-0 fw-normal">Pro</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$15<small class="text-muted fw-light">/mo</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>20 users included</li>
-                                        <li>10 GB of storage</li>
-                                        <li>Priority email support</li>
-                                        <li>Help center access</li>
-                                    </ul>
-                                    <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                                <div class="card-header py-3 text-white bg-primary border-primary">
-                                    <h4 class="my-0 fw-normal">Enterprise</h4>
-                                </div>
-                                <div class="card-body">
-                                    <h1 class="card-title pricing-card-title">$29<small class="text-muted fw-light">/mo</small></h1>
-                                    <ul class="list-unstyled mt-3 mb-4">
-                                        <li>30 users included</li>
-                                        <li>15 GB of storage</li>
-                                        <li>Phone and email support</li>
-                                        <li>Help center access</li>
-                                    </ul>
-                                    <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-                                </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">$40/<small style="font-size: 1rem;" class="text-muted fw-light bg-light ">/One time payment</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>40gb bandwidth</li>
+                                    <li>1 month</li>
+                                </ul>
+                                <a href="" class="w-100 btn btn-lg btn-success">Add to cart</a>
                             </div>
                         </div>
                     </div>
-                </main>
-
-                <?php
-                require_once 'includes/footer.php';
-                ?>
-                <script src="js/dark-mode-switch.min.js"></script>
-                <script src="js/navbar-switch.js"></script>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm bg-light">
+                            <div class="card-header py-3">
+                                <h4 class="my-0 fw-normal">Extra 140gb Bandwidth</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">$150/<small style="font-size: 1rem;" class="text-muted fw-light bg-light">One time payment</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>20 users included</li>
+                                    <li>10 GB of storage</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-success">Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm  bg-light">
+                            <div class="card-header py-3 bg-success text-white ">
+                                <h4 class="my-0 fw-normal">Unlimited bandwidth</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">$350<small class="text-muted fw-light bg-light">/mo</small></h1>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>Extra 30 users included</li>
+                                    <li>For duration of plan</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-success">Contact us</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </main>
+        <?php
+        require_once 'includes/footer.php';
+        ?>
+        <script>
+            feather.replace({
+                'aria-hidden': 'true'
+            })
+        </script>
+        <script src="js/dark-mode-switch.min.js"></script>
+        <script src="js/navbar-switch.js"></script>
 </body>
 
 </html>
