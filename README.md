@@ -1,4 +1,4 @@
-<h1>A  web project for finals using PHP for the backend</h1>
+<h1>A PHP web project using MVC framework structure</h1>
 
 <p>Sources</p>
 <pre>
