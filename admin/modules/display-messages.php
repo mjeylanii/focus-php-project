@@ -75,9 +75,30 @@
                         '<td  class="align-middle">' . $messages['message_phone'] . '</td>' .
                         '<td  class="align-middle">' . $messages['message_date'] . '</td>' .
                         '<td class="jquery" class="align-middle">' . $messages['message_status'] . '</td>' .
-                        '<td><a class="btn btn-secondary" href="modules/update-product.php?productId="' . $messages['message_txt'] . '</a><span data-feather="eye"></span></td>' .
+                        '<td><a id="viewMessage" data-bs-toggle="modal" data-bs-target="#staticBackdrop1" class="btn btn-secondary" href=""' . $messages['message_id'] . '</a><span data-feather="eye"></span></td>' .
                         '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $messages["message_id"] . '"><span data-feather="trash-2"></span></a></td>';
                 } ?>
             </tbody>
         </table>
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Reply</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <?php
+                        $id = $_GET['id'];
+                        $sql = $conn->query("SELECT * FROM messages WHERE message_id=$id");
+                        $messages = $sql->fetch(PDO::FETCH_ASSOC);
+                        echo $messages['message_txt'];
+                        ?>
+                    </div>
+                    <div class="modal-footer">
+                        <button name="submit" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </main>

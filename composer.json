@@ -1,0 +1,15 @@
+{
+    "name": "mohje/focus",
+    "authors": [
+        {
+            "name": "Mohamed Jeylani",
+            "email": "95252871+mJeylanii@users.noreply.github.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "app\\": "./"
+        }
+    },
+    "require": {}
+}
