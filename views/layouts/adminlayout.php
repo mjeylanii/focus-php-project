@@ -12,12 +12,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <!--Dashboard CSS -->
-    <link rel="stylesheet" type="text/css" href="dashboard.css">
+    <link rel="stylesheet" type="text/css" href="css/dashboard.css">
     <script src="js/feather.min.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
-
+<?php
+include 'includes/admin.navbar.phtml';
+?>
 <div class="container-fluid">
     <div class="row">
         <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse navbar-light">

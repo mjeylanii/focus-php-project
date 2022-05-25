@@ -6,7 +6,8 @@ class AdminController extends Controller
 {
     public function admin()
     {
-        $this->setLayout('admin');
+        $this->setLayout('adminlayout');
         return $this->render('orders');
     }
+
 }

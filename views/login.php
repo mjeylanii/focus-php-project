@@ -1,3 +1,4 @@
+<div><h1 class="text-center">Login</h1></div>
 <div class="form-register d-flex flex-column rounded-lg  w-50  mx-auto text-center mt-5">
     <img class="img-fluid mx-auto" src="images/logo.png" alt="logo" width="72" height="54">
     <form class="rounded-md p-5 mt-3 rounded" action="" method="POST">

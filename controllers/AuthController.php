@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\core\Request;
+use app\models\registerModel;
 
 class AuthController extends Controller
 {
@@ -16,8 +17,12 @@ class AuthController extends Controller
     {
         $this->setLayout('auth');
         $body = $request->getBody();
-        if($request->isPost()){
-
+        if ($request->isPost()) {
+            session_start();
+            $_SESSION['user'] = 1;
+            /*  echo '<pre>';
+             var_dump($_SESSION['user']);
+             echo '</pre>';*/
             echo "Handling your data";
         }
         return $this->render('login');
@@ -31,12 +36,23 @@ class AuthController extends Controller
 
     public function handleRegister(Request $request)
     {
-        $this->setLayout('auth');
-        $body = $request->getBody();
-        if($request->isPost()){
-            echo "Handling registration";
+        $errors = [];
+        $registerModel = new RegisterModel();
+        if ($request->isPost()) {
+            $registerModel->loadData($request->getBody());
+            if ($registerModel->validate() && $registerModel->register()) {
+                return 'Succesfuly registered';
+            }
+
+            return $this->render('register', [
+                'model' => $registerModel
+            ]);
         }
-        return $this->render('register');
+        $this->setLayout('auth');
+        return $this->render('register', [
+            'model' => $registerModel
+        ]);
+        /*     return $this->render('register', ['errors' => $errors]);*/
     }
 
     public function handleLogout(Request $request): array|bool|string

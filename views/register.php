@@ -4,13 +4,13 @@
         <div class="row">
             <div class="col">
             <div class="form-floating mb-2">
-                <input id="floatingInput" class="form-control" type="text" name="name" placeholder="Name" required>
+                <input id="floatingInput" class="form-control" type="text" name="firstname" placeholder="Name" required>
                 <label id="floatingtext" for="floatingInput">First name</label>
             </div>
             </div>
             <div class="col">
             <div class="form-floating mb-2">
-                <input id="floatingInput" class="form-control" type="text" name="surname" placeholder="Surname" required>
+                <input id="floatingInput" class="form-control" type="text" name="lastname" placeholder="Surname" required>
                 <label id="floatingtext" for="floatingInput">Last name</label>
             </div>
         </div>
@@ -25,12 +25,11 @@
             <label for="floatingInput">Password</label>
         </div>
         <div class="form-floating mb-2">
-            <input id="floatingInput" class="form-control" type="password" name="confirmPassword" placeholder="Re-enter password" required>
+            <input id="floatingInput" class="form-control" type="password" name="passwordConfirm" placeholder="Re-enter password" required>
             <label for="floatingInput">Confirm password</label>
         </div>
         <input class="btn btn-primary mb-1 mt-3" type="submit" value="Register" name="submit_registration">
         <p class="">Have an account? <a class="lead text-body" href="/login">Login</a></p>
     </form>
-
 </div>
 

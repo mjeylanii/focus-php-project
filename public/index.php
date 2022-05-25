@@ -48,7 +48,7 @@ $app->router->post('/contact', [SiteController::class, 'handleContact']);
 //Site controllers
 
 //Authorization controller
-$app->router->get('/admin', [AuthController::class, 'admin']);
+$app->router->get('/admin', [AdminController::class, 'admin']);
 $app->router->get('/register', [AuthController::class, 'register']);
 $app->router->post('/register', [AuthController::class, 'handleRegister']);
 $app->router->get('/login', [AuthController::class, 'login']);

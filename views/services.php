@@ -1,6 +1,7 @@
 <body>
-<div class="container py-3">
+
     <main>
+        <div class="container py-3">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm bg-light">
@@ -112,6 +113,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </main>
     <script>
         feather.replace({
