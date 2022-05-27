@@ -36,39 +36,82 @@ abstract class Model
                     $ruleName = $rule[0];
                 }
                 if ($ruleName === self::RULE_REQUIRED && !$value) {
-                    $this->addError($attribute, self::RULE_REQUIRED);
+                    $this->addErrorForRule($attribute, self::RULE_REQUIRED);
                 }
                 if ($ruleName === self::RULE_EMAIL && !filter_var($value, FILTER_VALIDATE_EMAIL)) {
-                    $this->addError($attribute, self::RULE_EMAIL);
+                    $this->addErrorForRule($attribute, self::RULE_EMAIL);
                 }
                 if ($ruleName === self::RULE_MIN && strlen($value) < $rule['min']) {
-                    $this->addError($attribute, self::RULE_MIN);
+                    $this->addErrorForRule($attribute, self::RULE_MIN, $rule);
                 }
                 if ($ruleName === self::RULE_MAX && strlen($value) > $rule['max']) {
-                    $this->addError($attribute, self::RULE_MAX);
+                    $this->addErrorForRule($attribute, self::RULE_MAX, $rule);
+                }
+                if ($ruleName === self::RULE_MATCH && $value != $this->{$rule['match']}) {
+                    $this->addErrorForRule($attribute, self::RULE_MATCH, $rule);
+                }
+                if ($ruleName == self::RULE_UNIQUE) {
+                    $className = $rule['class'];
+                    $uniqueAttr = $rule['attribute'] ?? $attribute;
+                    $tableName = $className::tableName();
+                    $stmt = Application::$app->db->prepare("SELECT * FROM $tableName WHERE $uniqueAttr = :attr");
+                    $stmt->bindValue(":attr", $value);
+                    $stmt->execute();
+                    $record = $stmt->fetchObject();
+                    if ($record) {
+                        $this->addErrorForRule($attribute, self::RULE_UNIQUE, ['field' => $attribute]);
+                    }
+
                 }
             }
         }
-   echo '<pre>';
-    var_dump($this->errors);
-    echo '</pre>';
+        /*        echo '<pre>';
+                 var_dump($this->errors);
+                 echo '</pre>';*/
         return empty($this->errors);
     }
 
-    private function addError(string $attribute, string $rule)
+    private function addErrorForRule(string $attribute, string $rule, $params = [])
     {
         $message = $this->errorMessages()[$rule] ?? '';
+        foreach ($params as $key => $value) {
+            $message = str_replace("{{$key}}", $value, $message);
+        }
         $this->errors[$attribute][] = $message;
     }
+
+    public function addError(string $attribute, string $message)
+    {
+        $this->errors[$attribute][] = $message;
+    }
+
 
     public function errorMessages()
     {
         return [
             self::RULE_REQUIRED => 'This field is required',
             self::RULE_EMAIL => 'This field must be a valid e-mail address',
-            self::RULE_MIN => 'Password minimum length must be {min}',
+            self::RULE_MIN => 'Minimum length must be {min}',
             self::RULE_MAX => 'Password maximum length must be {max}',
-            self::RULE_MATCH => 'Password do not match'
+            self::RULE_MATCH => 'Password do not match',
+            self::RULE_UNIQUE => 'This email is already registered'
         ];
     }
+
+    public function hasError($attribute)
+    {
+
+        return $this->errors[$attribute] ?? false;
+    }
+
+    /* public function getFirstError($attribute)
+     {
+         return $this->errors[$attribute][0] ?? false;
+     }
+
+     public function getSecondError($attribute)
+     {
+         return $this->errors[$attribute][1] ?? false;
+     }*/
+
 }

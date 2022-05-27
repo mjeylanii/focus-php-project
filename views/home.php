@@ -2,10 +2,12 @@
     <div class="header_main">
         <!-- Navbar -->
         <!-- Navbar end -->
+    </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex flex-column gap-4 justify-content-center">
-                    <h1 class=""><strong>Unlimited Web Hosting</strong></h1>
+                    <h1 class=""><strong>World's fastest internet</strong></h1>
                     <p class="lead">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
                         mauris sit amet orci.
                         Aenean dignissim pellentesque felis.Donec nec justo
@@ -14,7 +16,6 @@
                     <div class="container"><a class="btn btn-md btn-success" href="#" role="button">Get Started</a>
                         <a class="btn btn-lg btn-dark" href="about.html" role="button">Contact Us</a>
                     </div>
-
                 </div>
                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                     <div class="img-box">

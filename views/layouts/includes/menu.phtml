@@ -14,39 +14,44 @@
                 <li class="nav-item"><a class="nav-link fw-bold" href="#about" aria-current="page">About</a></li>
                 <li class="nav-item"><a class="nav-link fw-bold" href="/services" aria-current="page">Service</a></li>
                 <li class="nav-item"><a class="nav-link fw-bold" href="/contact">Contact Us</a></li>
-                <?php
-                if (@$_SESSION['user'] != NULL) {
-                    echo  '<div class="dropcenter text-end">
-					    <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle nav-link fw-bold btn btn-warning mx-3" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">' .
-                        @$_SESSION['name'] .
-                        '
+                <?php if (app\core\Application::isGuest()): ?>
+                    <?php $data = get_object_vars(app\core\Application::$app::isGuest()); ?>
+                    <div class="dropdown-center text-end">
+                        <a href="#"
+                           class="d-block link-dark text-decoration-none dropdown-toggle nav-link fw-bold btn btn-warning mx-3"
+                           id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <?php echo \app\core\Application::$app->user->getDisplayName() ?>
                         </a>
-					                  <ul class="dropdown-menu dropdown-menu-end  text-small me-3" aria-labelledby="dropdownUser1">
-								      <li> <a class="dropdown-item" href="/profile">Profile</a></li>
-									  <li>  <a class="dropdown-item" href="/profile">Orders</a></li>				     									  
-									  ';
-                    if (@$_SESSION['type'] == 1) {
-                        echo '<li><a class="dropdown-item" href="/admin">Admin Panel</a></li>';
-                    };
-                    echo '<li><a class="dropdown-item text-danger" href="index.php?logout">Logout</a></li>
-					</ul>
-					</div>';
-                } else {
-                    echo '  <div class="dropstart me-2">
-					<a class="btn btn-outline-warning dropdown-toggle nav-link" type="button" id="dropdownCenterBtn" data-bs-toggle="dropdown" aria-expanded="false">
-					Login
-				    </a>
-					         <ul class="text-small dropdown-menu shadow px-4" aria-labelledby="dropdownUser1">
-					         <form method="POST" action="/login" class="form-inline row gap-2 p-2">
-					         <input class="form-control mr-sm-2" type="email" placeholder="E-mail" aria-label="login" name="email">
-					         <input class="form-control mr-sm-2" type="password" placeholder="Password" aria-label="login" name="pass">
-					         <div class="container col"> <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit" name="submit_login">Login</button>
-					         <a class="text-muted" href="/register">Register</a></div>
-					         </form></ul></div>
-					                
-								      ';
-                }
-                ?>
+                        <ul class="dropdown-menu dropdown-menu-end  text-small" aria-labelledby="dropdownCenterBtn">
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile">Orders</a></li>
+                            <?php if (\app\core\Application::$app->user->getType() == 1 ){
+                                echo ' <li><a class="dropdown-item" href = "/admin" > Admin Panel </a ></li >';
+                            } ?>
+                            <li><a class="dropdown-item text-danger" href="/logout">Logout</a></li>
+                        </ul>
+                    </div>
+                <?php else: ?>
+                    <div class="dropstart me-2">
+                        <a class="btn btn-outline-warning dropdown-toggle nav-link" type="button" id="dropdownCenterBtn"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Login
+                        </a>
+                        <ul id="dropdown" class="text-small dropdown-menu shadow px-4 " aria-labelledby="dropdownUser1">
+                            <form method="POST" action="/login" class="form-inline row gap-2 p-2">
+                                <input class="form-control mr-sm-2" type="email" placeholder="E-mail" aria-label="login"
+                                       name="user_email">
+                                <input class="form-control mr-sm-2" type="password" placeholder="Password"
+                                       aria-label="login" name="user_password">
+                                <div class="container col">
+                                    <button class="d-inline btn btn-outline-success my-2 my-sm-0" type="submit"
+                                            name="submit_login">Login
+                                    </button>
+                                    <a class="text-muted" href="/register">Register</a></div>
+                            </form>
+                        </ul>
+                    </div>
+                <?php endif; ?>
                 <li class="toggle nav-item mt-2 ">
                     <div class="form-check form-switch ">
                         <input type="checkbox" class="form-check-input" id="darkSwitch"/>

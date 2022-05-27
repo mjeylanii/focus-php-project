@@ -17,7 +17,7 @@
                             <li>Email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <a href="" class="w-100 btn btn-lg btn-success">Add to cart</a>
+                        <a href="/services?id=444"" class="w-100 btn btn-lg btn-success">Subscribe</a>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,7 @@
                             <li>Priority email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-success">Add to cart</button>
+                        <a href="/services?id=1234" type="button" class="w-100 btn btn-lg btn-success">Subscribe</a>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
                             <li>Phone and email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-success">Contact us</button>
+                        <a href="/services?id=444" type="button" class="w-100 btn btn-lg btn-success">Contact us</a>
                     </div>
                 </div>
             </div>
@@ -75,7 +75,7 @@
                                 <li>40gb bandwidth</li>
                                 <li>1 month</li>
                             </ul>
-                            <a href="" class="w-100 btn btn-lg btn-success">Add to cart</a>
+                            <a href="/services?id=444" class="w-100 btn btn-lg btn-success">Add to subscription</a>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                                 <li>20 users included</li>
                                 <li>10 GB of storage</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-success">Add to cart</button>
+                            <a href="/services?id=444" type="button" class="w-100 btn btn-lg btn-success">Add to subscription</a>
                         </div>
                     </div>
                 </div>
@@ -108,11 +108,12 @@
                                 <li>Extra 30 users included</li>
                                 <li>For duration of plan</li>
                             </ul>
-                            <button type="button" class="w-100 btn btn-lg btn-success">Contact us</button>
+                            <a type="button" class="w-100 btn btn-lg btn-success">Contact us</a>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="col text-center"><a href="/checkout" class="btn btn-lg btn-secondary d-none">Proceed to checkout</a></div>
         </div>
     </main>
     <script>

@@ -63,6 +63,7 @@ class Router
         */
         if ($callback === false) {
             $this->response->setStatusCode(404);
+            header("location: _404");
             return 'Not found';
         }
         if (is_string($callback)) {
@@ -76,7 +77,7 @@ class Router
         /*Here we have call_user_func which takes a parameter the array $callback in this case and calls the function
         found in the  second index.
         */
-        return call_user_func($callback, $this->request);
+        return call_user_func($callback, $this->request, $this->response);
         /*Returns it to the $app->run that called this resolve() method and is echoed*/
     }
 

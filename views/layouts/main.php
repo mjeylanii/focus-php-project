@@ -1,3 +1,6 @@
+<?php
+use \app\core\Application;
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +34,7 @@
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-
+    <script src="js/checkout.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
     <!------------------------------------------------------------------------------------------------------------>
     <style>
@@ -51,7 +54,8 @@
 </head>
 
 <body class="bg-light">
-<?php include('includes/menu.phtml'); ?>
+<?php include('includes/menu.phtml');
+?>
 {{content}}
 <script src=""></script>
 <?php include "includes/footer.phtml"; ?>

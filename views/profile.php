@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <div class="container-fluid text-center">
     <div class="container text-center bg-primary w-25 rounded-circle">
-        <div class="container-fluid bg-light rounded-circle">
+        <div class="container bg-light rounded-circle">
+            <img class="img-fluid" src="images/user_images/3551739.jpg" alt="">
         </div>
     </div>
     <a href="" class="btn text-light btn-primary mt-3">Change profile picture</a>

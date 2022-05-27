@@ -40,10 +40,20 @@ class SiteController extends Controller
     {
         return $this->render('checkout');
     }
+
     public function users(): array|bool|string
     {
         return $this->render('users');
     }
 
+    public function notFound()
+    {
+        $this->setLayout('auth');
+        return $this->render('_404');
+    }
 
+    public function profile()
+    {
+        return $this->render('profile');
+    }
 }

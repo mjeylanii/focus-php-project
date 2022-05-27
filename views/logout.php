@@ -1,7 +1,7 @@
 <div class="text-center">
-    <div class="alert alert-success"><h1>Welcome back</h1></div>
+    <h1>Logging you out</h1>
+    <br>
     <p class="lead">Redirecting you to the home page...</p>
     <?php echo ' <meta http-equiv="refresh" 
           content="2; url=/" />' ?>
 </div>
-

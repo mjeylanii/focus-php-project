@@ -2,29 +2,27 @@
 
 namespace app\controllers;
 
+use app\core\Application;
 use app\core\Request;
-use app\models\registerModel;
+use app\core\Response;
+use app\models\LoginForm;
+use app\models\User;
 
 class AuthController extends Controller
 {
-    public function login(Request $request)
-    {
-        $this->setLayout('auth');
-        return $this->render('login');
-    }
 
-    public function handleLogin(Request $request)
+
+    public function login(Request $request, Response $response)
     {
-        $this->setLayout('auth');
-        $body = $request->getBody();
+        $loginForm = new LoginForm();
         if ($request->isPost()) {
-            session_start();
-            $_SESSION['user'] = 1;
-            /*  echo '<pre>';
-             var_dump($_SESSION['user']);
-             echo '</pre>';*/
-            echo "Handling your data";
+            $loginForm->loadData($request->getBody());
+            if ($loginForm->validate() && $loginForm->login()) {
+                $response->redirect('/loggedin');
+                return;
+            }
         }
+        $this->setLayout('auth');
         return $this->render('login');
     }
 
@@ -34,31 +32,49 @@ class AuthController extends Controller
         return $this->render('register');
     }
 
-    public function handleRegister(Request $request)
+    public function handleRegister(Request $request, Response $response)
     {
+        $this->setLayout('auth');
         $errors = [];
-        $registerModel = new RegisterModel();
+        $user = new User();
         if ($request->isPost()) {
-            $registerModel->loadData($request->getBody());
-            if ($registerModel->validate() && $registerModel->register()) {
-                return 'Succesfuly registered';
+            $user->loadData($request->getBody());
+            if ($user->validate() && $user->save()) {
+                Application::$app->session->setFlash('success', 'Successfully registered - Please enter your details to login');
+                $response->redirect('\registered');
+                /*Application::$app->response->redirect('registered');*/
+                exit();
             }
-
             return $this->render('register', [
-                'model' => $registerModel
+                'model' => $user
             ]);
         }
-        $this->setLayout('auth');
+
         return $this->render('register', [
-            'model' => $registerModel
+            'model' => $user
         ]);
         /*     return $this->render('register', ['errors' => $errors]);*/
     }
 
-    public function handleLogout(Request $request): array|bool|string
+    public function registered()
     {
-        $body = NULL;
-        return $this->render('loggedout');
+        $this->setLayout('auth');
+        return $this->render('registered');
+    }
+
+    public function loggedIn()
+    {
+        $this->setLayout('auth');
+        return $this->render('loggedin');
+
+    }
+
+
+    public function logout()
+    {
+        Application::$app->logout();
+        $this->setLayout('auth');
+        return $this->render('logout');
     }
 
 }
