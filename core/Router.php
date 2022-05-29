@@ -81,10 +81,10 @@ class Router
         /*Returns it to the $app->run that called this resolve() method and is echoed*/
     }
 
-    public function renderView($view, $params = [])
+    public function renderView($view, $params = [], $json = null)
     {
         $layoutContent = $this->layoutContent();
-        $viewContent = $this->renderOnlyView($view, $params);
+        $viewContent = $this->renderOnlyView($view, $params, $json);
         return str_replace('{{content}}', $viewContent, $layoutContent);
     }
 
@@ -97,11 +97,8 @@ class Router
     }
 
 
-    protected function renderOnlyView($view, $params)
+    protected function renderOnlyView($view, $params, $json)
     {
-        foreach ($params as $key => $value) {
-            $$key = $value;
-        }
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";
         return ob_get_clean();

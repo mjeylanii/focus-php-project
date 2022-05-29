@@ -1,6 +1,8 @@
 <?php
+
 use \app\core\Application;
- ?>
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,6 +37,10 @@ use \app\core\Application;
           href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <script src="js/checkout.js"></script>
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <script src="https://unpkg.com/feather-icons"></script>
     <!------------------------------------------------------------------------------------------------------------>
     <style>
@@ -56,8 +62,26 @@ use \app\core\Application;
 <body class="bg-light">
 <?php include('includes/menu.phtml');
 ?>
+
 {{content}}
-<script src=""></script>
+
 <?php include "includes/footer.phtml"; ?>
+<script src="js/dark-mode-switch.min.js"></script>
+<script src="js/navbar-switch.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
+        integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE"
+        crossorigin="anonymous"></script>
+<script>
+    $(window).scroll(function (event) {
+        var scroll = $(window).scrollTop();
+
+       if(scroll >= 600){
+           document.getElementById('promotion').classList.add('animate__fadeInRight');
+       }
+       else if (scroll < 600){
+           document.getElementById('promotion').classList.remove('animate__fadeInRight');
+       }
+    });
+</script>
 </body>
 </html>

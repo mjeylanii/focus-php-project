@@ -3,6 +3,7 @@
 namespace app\core;
 
 use app\controllers\Controller;
+use app\models\Product;
 
 class Application
 {
@@ -12,6 +13,7 @@ class Application
      * */
     public static string $ROOT_DIR;
     public string $userClass;
+    public string $productClass;
     public Request $request;
     public Router $router;
     public Response $response;
@@ -20,6 +22,8 @@ class Application
     public Session $session;
     public Database $db;
     public ?DbModel $user = null;
+    public ?DbModel $products = null;
+
 
     /*
      * 1:
@@ -28,6 +32,7 @@ class Application
     {
         $this->user = null;
         $this->userClass = $config['userClass'];
+        $this->productClass = $config['productClass'];
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
         $this->request = new Request();
@@ -37,10 +42,11 @@ class Application
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
         $this->session = new Session();
+        $this->products = (new $this->productClass);
         $userId = Application::$app->session->get('user');
         if ($userId) {
             $key = (new $this->userClass)->primaryKey();
-            $this->user = $this->userClass::findOne([$key => $userId]);
+            $this->user = $this->userClass::findOne([$key => $userId], $this->userClass);
         }
 
     }

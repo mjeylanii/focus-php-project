@@ -41,19 +41,16 @@ class AuthController extends Controller
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
                 Application::$app->session->setFlash('success', 'Successfully registered - Please enter your details to login');
-                $response->redirect('\registered');
-                /*Application::$app->response->redirect('registered');*/
+                $response->redirect('/registered');
                 exit();
             }
             return $this->render('register', [
                 'model' => $user
             ]);
         }
-
         return $this->render('register', [
             'model' => $user
         ]);
-        /*     return $this->render('register', ['errors' => $errors]);*/
     }
 
     public function registered()

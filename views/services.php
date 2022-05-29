@@ -1,14 +1,13 @@
 <body>
-
-    <main>
-        <div class="container py-3">
+<main>
+    <div class="container py-3">
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
                 <div class="card mb-4 rounded-3 shadow-sm bg-light">
                     <div class="card-header py-3">
                         <h4 class="my-0 fw-normal">Standard</h4>
                     </div>
-                    <div class="card-body ">
+                    <div class="card-body">
                         <h1 class="card-title pricing-card-title">$5<small
                                     class="text-muted fw-light bg-light">/mo</small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
@@ -17,7 +16,7 @@
                             <li>Email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <a href="/services?id=444"" class="w-100 btn btn-lg btn-success">Subscribe</a>
+                        <button value="1100" class="w-100 btn btn-lg btn-success add">Subscribe</button>
                     </div>
                 </div>
             </div>
@@ -35,7 +34,8 @@
                             <li>Priority email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <a href="/services?id=1234" type="button" class="w-100 btn btn-lg btn-success">Subscribe</a>
+                        <button vlaue="999" class="w-100 btn btn-lg btn-success add">Subscribe
+                        </button>
                     </div>
                 </div>
             </div>
@@ -53,14 +53,13 @@
                             <li>Phone and email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <a href="/services?id=444" type="button" class="w-100 btn btn-lg btn-success">Contact us</a>
+                        <a href="/contact" type="button" class="w-100 btn btn-lg btn-success">Contact us</a>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="container py-3">
-
             <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
                 <div class="col">
                     <div class="card mb-4 rounded-3 shadow-sm bg-light">
@@ -75,7 +74,8 @@
                                 <li>40gb bandwidth</li>
                                 <li>1 month</li>
                             </ul>
-                            <a href="/services?id=444" class="w-100 btn btn-lg btn-success">Add to subscription</a>
+                            <button href="/services?id=444" class="w-100 btn btn-lg btn-success add">Add to subscription
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,11 @@
                                 <li>20 users included</li>
                                 <li>10 GB of storage</li>
                             </ul>
-                            <a href="/services?id=444" type="button" class="w-100 btn btn-lg btn-success">Add to subscription</a>
+                            <button href="/services" type="button" class="w-100 btn btn-lg btn-success add" value="887">
+                                Add
+                                to
+                                subscription
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -108,21 +112,21 @@
                                 <li>Extra 30 users included</li>
                                 <li>For duration of plan</li>
                             </ul>
-                            <a type="button" class="w-100 btn btn-lg btn-success">Contact us</a>
+                            <a type="button" href="/contact" class="w-100 btn btn-lg btn-success">Contact us</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col text-center"><a href="/checkout" class="btn btn-lg btn-secondary d-none">Proceed to checkout</a></div>
+            <div class="col text-center"><a id="proceedCheckout" href="/checkout" class="btn btn-lg btn-secondary d-none">Proceed to payment</a></div>
         </div>
-    </main>
-    <script>
-        feather.replace({
-            'aria-hidden': 'true'
-        })
-    </script>
-    <script src="js/dark-mode-switch.min.js"></script>
-    <script src="js/navbar-switch.js"></script>
+</main>
+<script>
+    feather.replace({
+        'aria-hidden': 'true'
+    })
+</script>
+<script src="js/dark-mode-switch.min.js"></script>
+<script src="js/navbar-switch.js"></script>
 </body>
 
 </html>

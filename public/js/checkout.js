@@ -1,32 +1,25 @@
-(function ($, window, document) {
+$(function () {
+    checkoutBtn = $("#proceedCheckout");
 
-    // The $ is now locally scoped 
 
-    $(function () {
-        countries();
+    $(".add").on('click', function () {
+        localStorage.setItem('product_id', $(this).val());
+        checkoutBtn.removeClass("d-none");
+        $.ajax({    //create an ajax request to display.php
+            type: "GET",
+            url: "/products",
+            data: {product_id: parseInt(localStorage.getItem("product_id"))},
+            dataType: "json",   //expect html to be returned
+            success: function (response) {
+                let productId = response.product_id;
+                let productName = response.product_name;
+                let productPrice = response.product_price;
+                let productDetails = response.product_details;
+                localStorage.setItem('product_id', productId);
+                localStorage.setItem('product_name', productName);
+                localStorage.setItem('product_price', productPrice);
+                localStorage.setItem('product_details', productDetails);
+            }
+        });
     });
-
-    function countries() {
-        const selectList = $('#country');
-        var closure = "</option>";
-
-        fetch('https://restcountries.com/v3.1/all').then(res => {
-            return res.json();
-        }).then(data => {
-            let output = "";
-            data.forEach(country => {
-                country.name;
-                console.log(country.name);
-                output += '<option value="' + ${country.name} +'">' + ${country.name} +closure;
-                console.log(output);
-            })
-            selectList.html = output;
-        }).catch(err => {
-            console.log(err);
-        })
-    }
-
-    // The rest of the code goes here!
-
-}(window.jQuery, window, document));
-
+})

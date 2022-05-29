@@ -25,21 +25,26 @@ class Request
 
     public function method(): string
     {
+
+        /*This method is to return the request method by checking the super global $_SERVER */
         return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
     public function isGet()
     {
+        /*Here we call onto the method 'method()' and return a true or false  */
         return $this->method() === 'get';
     }
 
     public function isPost()
     {
+        /*Here we call onto the method 'method()' and return a true or false  */
         return $this->method() === 'post';
     }
 
     public function getBody()
     {
+        /*This method gets the body of either the get or post methods and returns it*/
         $body = [];
         if ($this->method() === 'get') {
             foreach ($_GET as $key => $value) {

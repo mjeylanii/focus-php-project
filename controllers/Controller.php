@@ -13,8 +13,13 @@ class Controller
         $this->layout = $layout;
     }
 
-    public function render($view, $params = [])
+    public function render($view,  $params = [], $json = null,)
     {
-        return Application::$app->router->renderView($view, $params);
+        return Application::$app->router->renderView($view, $params, $json);
+    }
+
+    public function foo()
+    {
+        
     }
 }

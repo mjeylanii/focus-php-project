@@ -26,10 +26,12 @@ use app\controllers\PaymentController;
 use \app\core\Application;
 use \app\controllers\SiteController;
 use  \app\controllers\AuthController;
+
 /**************************************/
 /*Here we create db keys */
 $config = [
     'userClass' => \app\models\User::class,
+    'productClass' => \app\models\Product::class,
     'db' => [
         'dsn' => $_ENV['DB_DSN'],
         'user' => $_ENV['DB_USER'],
@@ -55,12 +57,13 @@ $app->router->get('/services', [SiteController::class, 'services']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
 $app->router->get('/profile', [SiteController::class, 'profile']);
 $app->router->get('/profile/{id:\d+}/{username}', [SiteController::class, 'login']);
-$app->router->post('/contact', [SiteController::class, 'handleContact']);
+$app->router->post('/contact', [SiteController::class, 'contact']);
 $app->router->get('/_404', [SiteController::class, 'notFound']);
 //Site controllers
 //Checkout/Payment Controller
 $app->router->get('/checkout', [PaymentController::class, 'checkout']);
 $app->router->post('/checkout', [PaymentController::class, 'checkout']);
+$app->router->get('/paymentconfirm', [PaymentController::class, 'paymentconfirm']);
 //Checkout/Payment Controller
 
 //Authorization controller
@@ -72,8 +75,17 @@ $app->router->get('/loggedin', [AuthController::class, 'loggedIn']);
 $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->get('/logout', [AuthController::class, 'logout']);
-$app->router->get('/orders', [AdminController::class, 'admin']);
 //Authorization controller
+
+//AdminController
+$app->router->get('/orders', [AdminController::class, 'orders']);
+$app->router->get('/products', [AdminController::class, 'products']);
+$app->router->get('/users', [AdminController::class, 'users']);
+$app->router->get('/messages', [AdminController::class, 'messages']);
+$app->router->post('/orders', [AdminController::class, 'orders']);
+$app->router->post('/products', [AdminController::class, 'products']);
+$app->router->post('/users', [AdminController::class, 'users']);
+///Admin controllers
 /*
  * At the end of the index Script we execute the run method found in Application class
  *

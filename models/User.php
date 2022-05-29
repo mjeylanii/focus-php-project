@@ -2,7 +2,6 @@
 
 namespace app\models;
 
-use app\core\DbModel;
 use app\core\UserModel;
 
 class User extends UserModel
@@ -20,6 +19,7 @@ class User extends UserModel
     public string $passwordConfirm = '';
     public string $user_status = self::STATUS_INACTIVE;
     public int $user_type = self::USER_NORMAL;
+    public string $registration_date;
 
     public function tableName(): string
     {
@@ -33,11 +33,10 @@ class User extends UserModel
 
     public function save()
     {
-
         $this->status = self::STATUS_DELETED;
         $this->type = self::USER_NORMAL;
         $this->user_id = rand(9999, 99998);
-        $this->user_password = password_hash($this->user_password, PASSWORD_DEFAULT);
+        $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
         return parent::save();
     }
 
@@ -62,9 +61,34 @@ class User extends UserModel
         return $this->user_firstname ?? 'Guest';
     }
 
+    public function getFullName(): string
+    {
+        return $this->user_firstname . ' ' . $this->user_lastname ?? 'Guest';
+    }
+
 
     public function getType(): int
     {
         return $this->user_type;
+    }
+
+    public function getDate(): string
+    {
+        return $this->registration_date;
+    }
+
+    public function getStatus(): string
+    {
+        return $this->user_status;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->user_email;
+    }
+
+    public function deleteUser($where): bool
+    {
+        return self::delete($where, self::class);
     }
 }

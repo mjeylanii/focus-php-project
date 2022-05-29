@@ -17,24 +17,26 @@
             </thead>
             <tbody>
             <?php
-            while ($userData = $sql->fetch(PDO::FETCH_ASSOC)) {
+            $users = $params;
+            foreach ($users as $user) {
                 echo '
                     <tr class="">
-                         <td  class="align-middle">' . $userData['user_id'] . '</td>' .
-                    '<td  class="align-middle">' . $userData['user_name'] . '</td>' .
-                    '<td  class="align-middle">' . $userData['user_surname'] . '</td>' .
-                    '<td  class="align-middle">' . $userData['user_email'] . '</td>' .
-                    '<td  class="align-middle">' . $userData['registration_date'] . '</td>' .
-                    '<td  class="align-middle">' . $userData['user_status'] . '</td>';
-                if ($userData['user_status'] == 'VERIFIED') {
+                     <td  class="align-middle">' . $user['user_id'] . '</td>' .
+                    '<td  class="align-middle">' . $user['user_firstname'] . '</td>' .
+                    '<td  class="align-middle">' . $user['user_lastname'] . '</td>' .
+                    '<td  class="align-middle">' . $user['user_email'] . '</td>' .
+                    '<td  class="align-middle">' . $user['registration_date'] . '</td>' .
+                    '<td  class="align-middle">' . $user['user_status'] . '</td>';
+                if ($user['user_status'] == 'VERIFIED') {
                     echo
-                        '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $userData["user_id"] . '"><span data-feather="trash-2"></span></a>' . '</td>' .
-                        '</tr>';
+                        '<td><a class="btn btn-danger text-light ms-1" href="users?id=' . $user["user_id"] .
+                        '"><span data-feather="trash-2"></span></a>' . '</td></tr>';
                 } else {
-                    echo  '<td><a class="btn btn-success text-light" href="modules/delete-verify-users.php?delete=0&id=' . $userData["user_id"] . '"><span data-feather="check-circle"></span>
-                               </a><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $userData["user_id"] . '"><span data-feather="trash-2"></span></a>' .
+                    echo '<td><a class="btn btn-success text-light" href="users?id=' . $user["user_id"] . '"><span data-feather="check-circle"></span>
+                     </a><a class="btn btn-danger text-light ms-1" href="users?id=' . $user["user_id"] . '"><span data-feather="trash-2"></span></a>' .
                         '</td></td>' .
                         '<td></tr>';
+
                 }
             }
             ?>

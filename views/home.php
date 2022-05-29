@@ -4,36 +4,34 @@
         <!-- Navbar end -->
     </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-flex flex-column gap-4 justify-content-center">
-                    <h1 class=""><strong>World's fastest internet</strong></h1>
-                    <p class="lead">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
-                        mauris sit amet orci.
-                        Aenean dignissim pellentesque felis.Donec nec justo
-                        eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
-                        dignissim pellentesque felis.</p>
-                    <div class="container"><a class="btn btn-md btn-success" href="#" role="button">Get Started</a>
-                        <a class="btn btn-lg btn-dark" href="about.html" role="button">Contact Us</a>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                    <div class="img-box">
-                        <figure><img src="images/woofer.png" alt="img" style="max-width: 100%;"></figure>
-                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex flex-column gap-4 justify-content-center">
+                <h1 class=""><strong>World's fastest internet</strong></h1>
+                <p class="lead">Donec nec justo eget felis facilisis fermentum. Aliquam porttitor
+                    mauris sit amet orci.
+                    Aenean dignissim pellentesque felis.Donec nec justo
+                    eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean
+                    dignissim pellentesque felis.</p>
+                <div class="container"><a class="btn btn-md btn-success" href="#" role="button">Get Started</a>
+                    <a class="btn btn-lg btn-dark" href="about.html" role="button">Contact Us</a>
                 </div>
             </div>
-            <div class="container">
-                <div class="col-md-9 ">
-                    <div class="input-group mb-3 mt-5">
-                        <input type="text" class="form-control" placeholder="Enter domain name here">
-                        <div class="input-group-append">
-                            <a class="text-light btn btn-dark rounded-end p-3" href="#">Search</a>
-                        </div>
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 d-none d-md-block">
+                <figure><img src="images/woofer.png" alt="img" style="max-width: 100%;"></figure>
+            </div>
+        </div>
+        <div class="container">
+            <div class="col-md-9 ">
+                <div class="input-group mb-3 mt-5">
+                    <input type="text" class="form-control" placeholder="Enter domain name here">
+                    <div class="input-group-append">
+                        <a class="text-light btn btn-dark rounded-end p-3" href="#">Search</a>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </header>
 <!-- banner end -->
 <!-- choose start -->
@@ -90,7 +88,7 @@
 </div>
 <!-- choose start -->
 <!-- about start -->
-<div id="promotion" class="container-fluid bg-secondary py-3 bg-success my-5 b-5">
+<div id="promotion" class="container-fluid bg-secondary py-3 bg-success my-5 b-5 animate__animated animate__delay-1s">
     <div class="container my-5 ">
         <div class="row">
             <div class="col-md-6 mb-3">
@@ -219,10 +217,8 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-6">
-                <div class="section_right">
+            <div class="col-md-6 d-none d-md-block">
                     <img src="images/img-2.png" style="max-width: 100%;" alt="">
-                </div>
             </div>
         </div>
     </div>

@@ -22,6 +22,7 @@ abstract class Model
                 $this->{$key} = $value;
             }
         }
+        return false;
     }
 
     abstract public function rules(): array;
@@ -104,14 +105,5 @@ abstract class Model
         return $this->errors[$attribute] ?? false;
     }
 
-    /* public function getFirstError($attribute)
-     {
-         return $this->errors[$attribute][0] ?? false;
-     }
-
-     public function getSecondError($attribute)
-     {
-         return $this->errors[$attribute][1] ?? false;
-     }*/
 
 }
