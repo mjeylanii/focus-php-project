@@ -7,27 +7,33 @@ use app\core\ProductModel;
 use app\core\Request;
 use app\core\Response;
 use app\models\Message;
+use app\models\Order;
 use app\models\Product;
 use app\models\User;
 
 class AdminController extends Controller
 {
-    public function admin()
+    public function dashboard()
     {
 
         $this->setLayout('adminlayout');
-        return $this->render('admin');
+        return $this->render('dashboard');
     }
 
     public function orders(Request $request, Response $response)
     {
+        $order = new Order();
+        if ($request->isGet()) {
+            $orders = $order->getAll($order::class);
+        }
         $this->setLayout('adminlayout');
-        return $this->render('orders');
+        return $this->render('orders', $orders);
     }
 
     public function products(Request $request, Response $response)
     {
         $product = new Product();
+        /*Product addition logic start*/
         if ($request->isPost()) {
             $product->loadData($request->getBody());
             if ($product->validate() && $product->save()) {
@@ -38,10 +44,22 @@ class AdminController extends Controller
                 Application::$app->session->setFlash('notadded', 'Unable to add product - Product might already exist');
                 $response->redirect('/products');
             }
+        } /*Product Addition logic end / Delete product logic start*/
+        elseif ($request->isGet()) {
+            $key = $product->primaryKey();
+            $product->loadData($request->getBody());
+            if (array_key_exists('delete_product', $request->getBody())) {
+                $productData = [$key => $product->product_id];
+                if ($product->deleteProduct($productData))
+                    Application::$app->session->setFlash('deletedproduct', "The product was deleted succesfully");
+                else {
+                    Application::$app->session->setFlash('notdeletedproduct', "The product was not deleted");
+                }
+            }
         }
+        /*Delete product logic end / Find product logic start*/
         if ($request->isGet()) {
-
-            if ($product->loadData($request->getBody())) {
+            if (array_key_exists('fetch_product', $request->getBody())) {
                 $key = $product->primaryKey();
                 $productData = [$key => $product->product_id];
                 $products = $product->findOne($productData, $product::class);
@@ -55,12 +73,33 @@ class AdminController extends Controller
 
     public function users(Request $request, Response $response)
     {
+        if ($request->isGet()) {
+            $user = new User();
+            $key = $user->primaryKey();
+            $user->loadData($request->getBody());
+            if (array_key_exists('delete_user', $request->getBody())) {
+                $userData = [$key => $user->user_id];
+                if ($user->deleteUser($userData)) {
+                    Application::$app->session->setFlash('deleteduser', "User deleted");
+                } else {
+                    Application::$app->session->setFlash('usernotdeleted', "User not delete - Please try again");
+                }
+            } elseif (array_key_exists('verify_user', $request->getBody())) {
+                $userData = [$key => $user->user_id];
+                if ($user->verifyUser($userData)) {
+                    Application::$app->session->setFlash('active', "User verified");
+                }
+            } else {
+                Application::$app->session->setFlash('notactive', "User not delete - User not verified");
+            }
+        }
         $users = User::getAll(User::class);
         $this->setLayout('adminlayout');
         return $this->render('users', $users);
     }
 
-    public function messages(Request $request, Response $response)
+    public
+    function messages(Request $request, Response $response)
     {
         $message = new Message();
         if ($request->isPost()) {
@@ -85,7 +124,7 @@ class AdminController extends Controller
         }
         if ($request->isGet()) {
             if (array_key_exists('ajaxreq', $request->getBody())) {
-                $messages = $message->getAllMessages();
+                $messages = $message->getAll($message::class, ['message_status' => 'NOT READ']);
                 return json_encode($messages);
             }
         }

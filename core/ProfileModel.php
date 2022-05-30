@@ -1,24 +1,18 @@
 <?php
 
-namespace app\models;
+namespace app\core;
 
-use app\core\CheckoutModel;
-
-class Checkout extends CheckoutModel
+abstract class ProfileModel extends DbModel
 {
-    public int $order_id = 0;
-    public int $user_id = 0;
-    public int $payment_id = 0;
-    public int $product_id = 0;
 
     public function tableName(): string
     {
-        return 'orders';
+        // TODO: Implement tableName() method.
     }
 
     public function attributes(): array
     {
-        return ['order_id', 'user_id', 'payment_id', 'product_id'];
+        // TODO: Implement attributes() method.
     }
 
     public function primaryKey(): string
@@ -28,7 +22,6 @@ class Checkout extends CheckoutModel
 
     public function rules(): array
     {
-
         // TODO: Implement rules() method.
     }
 }

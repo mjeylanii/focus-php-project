@@ -95,7 +95,7 @@ abstract class Model
             self::RULE_MIN => 'Minimum length must be {min}',
             self::RULE_MAX => 'Password maximum length must be {max}',
             self::RULE_MATCH => 'Password do not match',
-            self::RULE_UNIQUE => 'This email is already registered'
+            self::RULE_UNIQUE => 'A record of this was already found'
         ];
     }
 

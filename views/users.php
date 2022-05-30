@@ -1,4 +1,44 @@
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <?php if (\app\core\Application::$app->session->getFlash('verified')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('verified') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if (\app\core\Application::$app->session->getFlash('notverified')): ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('notverified') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if (\app\core\Application::$app->session->getFlash('deleted')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('deleted') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if (\app\core\Application::$app->session->getFlash('notverified')): ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('notdeleted') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if (\app\core\Application::$app->session->getFlash('activesub')): ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('activesub') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Users</h1>
     </div>
@@ -32,8 +72,8 @@
                         '<td><a class="btn btn-danger text-light ms-1" href="users?id=' . $user["user_id"] .
                         '"><span data-feather="trash-2"></span></a>' . '</td></tr>';
                 } else {
-                    echo '<td><a class="btn btn-success text-light" href="users?id=' . $user["user_id"] . '"><span data-feather="check-circle"></span>
-                     </a><a class="btn btn-danger text-light ms-1" href="users?id=' . $user["user_id"] . '"><span data-feather="trash-2"></span></a>' .
+                    echo '<td><button class="btn btn-success text-ligh userVerify" value="' . $user["user_id"] . '"><span data-feather="check-circle"></span>
+                     </button><button class="btn btn-danger text-light ms-1 userDelete" value="' . $user["user_id"] . '"><span data-feather="trash-2"></span></button>' .
                         '</td></td>' .
                         '<td></tr>';
 
@@ -48,4 +88,5 @@
             'aria-hidden': 'true'
         })
     </script>
+    <script src="js/userController.js"></script>
 </main>

@@ -5,6 +5,7 @@ $(document).ready(function () {
         data: {ajaxreq: 1},
         dataType: "json",
         success: function (response) {
+            console.log(response);
             $("#newMessage").html(Object.keys(response).length);
 
         }

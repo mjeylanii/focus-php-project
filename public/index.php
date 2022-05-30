@@ -23,6 +23,7 @@ $dotenv->load();
 
 use \app\controllers\AdminController;
 use app\controllers\PaymentController;
+use app\controllers\ProfileController;
 use \app\core\Application;
 use \app\controllers\SiteController;
 use  \app\controllers\AuthController;
@@ -51,21 +52,20 @@ $app = new Application(dirname(__DIR__), $config);//Create an instance of the Ap
 /*
  * The get method takes a path and method as a parameter.
  * CTRL+click on get() for more info*/
+$app->router->get('/profile', [ProfileController::class, 'profile']);
+$app->router->get('/profile/{id:\d+}/{username}', [ProfileController::class, 'login']);
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/home', [SiteController::class, 'home']);
 $app->router->get('/services', [SiteController::class, 'services']);
 $app->router->get('/contact', [SiteController::class, 'contact']);
-$app->router->get('/profile', [SiteController::class, 'profile']);
-$app->router->get('/profile/{id:\d+}/{username}', [SiteController::class, 'login']);
 $app->router->post('/contact', [SiteController::class, 'contact']);
 $app->router->get('/_404', [SiteController::class, 'notFound']);
 //Site controllers
-//Checkout/Payment Controller
+//Order/PaymentForm Controller
 $app->router->get('/checkout', [PaymentController::class, 'checkout']);
 $app->router->post('/checkout', [PaymentController::class, 'checkout']);
 $app->router->get('/paymentconfirm', [PaymentController::class, 'paymentconfirm']);
-//Checkout/Payment Controller
-
+//Order/PaymentForm Controller
 //Authorization controller
 $app->router->get('/admin', [AdminController::class, 'admin']);
 $app->router->get('/register', [AuthController::class, 'register']);
@@ -76,8 +76,8 @@ $app->router->post('/login', [AuthController::class, 'login']);
 $app->router->get('/login', [AuthController::class, 'login']);
 $app->router->get('/logout', [AuthController::class, 'logout']);
 //Authorization controller
-
 //AdminController
+$app->router->get('/dashboard', [AdminController::class, 'dashboard']);
 $app->router->get('/orders', [AdminController::class, 'orders']);
 $app->router->get('/products', [AdminController::class, 'products']);
 $app->router->get('/users', [AdminController::class, 'users']);

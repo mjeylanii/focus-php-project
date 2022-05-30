@@ -75,10 +75,10 @@ use \app\core\Application;
     $(window).scroll(function (event) {
         var scroll = $(window).scrollTop();
 
-       if(scroll >= 600){
+       if(scroll >= 550){
            document.getElementById('promotion').classList.add('animate__fadeInRight');
        }
-       else if (scroll < 600){
+       else if (scroll < 550){
            document.getElementById('promotion').classList.remove('animate__fadeInRight');
        }
     });

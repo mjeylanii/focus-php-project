@@ -6,16 +6,17 @@ use app\core\ProductModel;
 
 class Product extends ProductModel
 {
-    const PRODUCT_AVAILABLE = 'Available';
-    const PRODUCT_UNAVAILABLE = 'Unavailable';
+    const PRODUCT_AVAILABLE = 'AVAILABLE';
+    const PRODUCT_UNAVAILABLE = 'UNAVAILABLE';
     public int $product_id = 0;
     public string $product_name = '';
     public int $product_price = 0;
     public string $product_details = '';
+    public string $product_status = '';
 
     public function save()
     {
-
+        $this->product_status = self::PRODUCT_AVAILABLE;
         return parent::save();
     }
 
@@ -41,7 +42,7 @@ class Product extends ProductModel
 
     public function attributes(): array
     {
-        return ['product_id', 'product_name', 'product_price', 'product_details'];
+        return ['product_id', 'product_name', 'product_price', 'product_details', 'product_status'];
     }
 
     public function getProductId(): int
@@ -66,6 +67,11 @@ class Product extends ProductModel
 
     public function getAllProducts(): array
     {
-       return self::getAll(self::class);
+        return parent::getAll(self::class);
+    }
+
+    public function deleteProduct($where)
+    {
+        return self::delete($where, self::class);
     }
 }

@@ -1,7 +1,7 @@
 <div class="text-center">
     <?php if(\app\core\Application::$app->session->getFlash('payment')): ?>
         <div class="alert alert-success text-center fw-bolder">
-            <?php echo \app\core\Application::$app->session->getFlash('success') ?>
+            <?php echo \app\core\Application::$app->session->getFlash('payment') ?>
         </div>
     <?php endif; ?>
     <h1 class="display-3"></h1>

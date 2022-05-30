@@ -33,7 +33,6 @@ class User extends UserModel
 
     public function save()
     {
-        $this->status = self::STATUS_DELETED;
         $this->type = self::USER_NORMAL;
         $this->user_id = rand(9999, 99998);
         $this->user_password = password_hash($this->user_password, PASSWORD_BCRYPT);
@@ -90,5 +89,15 @@ class User extends UserModel
     public function deleteUser($where): bool
     {
         return self::delete($where, self::class);
+    }
+
+    public function verifyUser($where)
+    {
+        $this->user_status = self::STATUS_ACTIVE;
+
+        $wherecol = [
+            'user_status' => self::STATUS_ACTIVE,
+        ];
+        return self::update($wherecol, $where, self::class);
     }
 }

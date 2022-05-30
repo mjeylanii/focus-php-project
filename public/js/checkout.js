@@ -1,7 +1,5 @@
 $(function () {
     checkoutBtn = $("#proceedCheckout");
-
-
     $(".add").on('click', function () {
         localStorage.setItem('product_id', $(this).val());
         checkoutBtn.removeClass("d-none");

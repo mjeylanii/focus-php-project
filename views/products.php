@@ -74,6 +74,22 @@
             </button>
         </div>
     <?php endif; ?>
+    <?php if (\app\core\Application::$app->session->getFlash('deletedproduct')): ?>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('notdeletedproduct') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
+    <?php if (\app\core\Application::$app->session->getFlash('notdeletedproduct')): ?>
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <h3><?php echo @\app\core\Application::$app->session->getFlash('notdeletedproduct') ?></h3>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    <?php endif; ?>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
             <thead>
@@ -88,19 +104,67 @@
             </tr>
             </thead>
             <tbody>
-         <?php
-               $product = $params;
-             foreach ($product as $key => $products) {
-                 echo '
+            <?php
+            $product = $params;
+            foreach ($product as $key => $products) {
+                echo '
                       <tr class="">
                       <td  class="align-middle">' . $products['product_id'] . '</td>' .
-                     '<td  class="align-middle">' . $products['product_name'] . '</td>' .
-                     '<td  class="align-middle">$' . $products['product_price'] . '</td>' .
-                     '<td  class="align-middle">' . $products['product_details'] . '</td>' .
-                     '<td><a class="btn btn-secondary" href="products?id="' . $products['product_id'] . '</a><span data-feather="edit"></span></td>' .
-                     '<td><a class="btn btn-danger text-light ms-1" href="products?id=' . $products["product_id"] . '"><span data-feather="trash-2"></span></a></td></tr>';
-             } ?>
+                    '<td  class="align-middle">' . $products['product_name'] . '</td>' .
+                    '<td  class="align-middle">$' . $products['product_price'] . '</td>' .
+                    '<td  class="align-middle">' . $products['product_details'] . '</td>' .
+                    '<td><button data-bs-toggle="modal" data-bs-target="#staticBackdrop1" class="btn btn-secondary productUpdateBtn" value="' . $products['product_id'] . '"><span data-feather="edit"></span></button></td>' .
+                    '<td><button   class="btn btn-danger text-light ms-1 productDeleteBtn" value="' . $products["product_id"] . '"><span data-feather="trash-2"></span></button></td></tr>';
+            } ?>
             </tbody>
         </table>
 </main>
+<!--Editing product modal start-->
+<div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/products" method="POST">
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-list-ol"></i></span>
+                        <input id="product_id" type="text" name="product_id" class="form-control"
+                               placeholder="Product ID"
+                               aria-label="ID"
+                               aria-describedby="addon-wrapping" required disabled>
+                    </div>
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-bag-fill"></i></span>
+                        <input id="product_name" type="text" name="product_name" class="form-control"
+                               placeholder="Product name"
+                               aria-label="Product name" aria-describedby="addon-wrapping" required>
+                    </div>
 
+                    <div class="input-group flex-nowrap mb-3">
+                        <span class="input-group-text" id="addon-wrapping"><i class="bi bi-tags"></i></span>
+                        <input id="product_price" type="text" name="product_price" class="form-control"
+                               placeholder="Product price"
+                               aria-label="Price" aria-describedby="addon-wrapping" required>
+                    </div>
+                    <div class="input-group flex-nowrap mb-3">
+                            <span class="input-group-text" id="addon-wrapping"><i
+                                        class="bi bi-file-text-fill"></i></span>
+                        <input id="product_details" type="text" name="product_details" class="form-control"
+                               placeholder="Product description"
+                               aria-label="description" aria-describedby="addon-wrapping" required>
+                    </div>
+                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Update</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button name="submit" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/product_controller.js"></script>
+<!--Editing product modal end-->

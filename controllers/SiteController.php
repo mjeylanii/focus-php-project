@@ -5,15 +5,15 @@ namespace app\controllers;
 use app\core\Application;
 use app\core\Request;
 use app\core\Response;
+use app\models\Order;
 use app\models\Message;
+use app\models\Payment;
+use app\models\Product;
 
 class SiteController extends Controller
 {
     public function home(): array|bool|string
     {
-        $params = [
-            'name' => "PC MASTER"
-        ];
         return $this->render('home');
     }
 
@@ -62,8 +62,5 @@ class SiteController extends Controller
         return $this->render('_404');
     }
 
-    public function profile()
-    {
-        return $this->render('profile');
-    }
+
 }

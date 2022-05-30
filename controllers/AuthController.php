@@ -44,9 +44,11 @@ class AuthController extends Controller
                 $response->redirect('/registered');
                 exit();
             }
-            return $this->render('register', [
-                'model' => $user
-            ]);
+            else{
+               Application::$app->session->setFlash('failregister', 'User with this E-mail already exists');
+               $response->redirect('/register');
+            }
+
         }
         return $this->render('register', [
             'model' => $user

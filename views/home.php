@@ -88,7 +88,7 @@
 </div>
 <!-- choose start -->
 <!-- about start -->
-<div id="promotion" class="container-fluid bg-secondary py-3 bg-success my-5 b-5 animate__animated animate__delay-1s">
+<div id="promotion" class="container-fluid bg-secondary py-3 bg-success my-5 b-5 animate__animated ">
     <div class="container my-5 ">
         <div class="row">
             <div class="col-md-6 mb-3">

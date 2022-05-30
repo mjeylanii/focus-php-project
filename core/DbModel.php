@@ -40,14 +40,24 @@ abstract class DbModel extends Model
             $stmt->bindValue(":$key", $item);
         }
         $stmt->execute();
-        return $stmt->fetchObject(static::class);/*Return the instance of the calling class (fetchObject returns object by  default))*/
+        return $stmt->fetchObject(static::class);/*Return the data in the  instance of the calling class (fetchObject returns object by  default))*/
     }
 
-    public static function getAll($class)
+    public static function getAll($class, $where = [])
     {
         $class = new $class();
         $tableName = $class->tableName();
-        /* $attributes = array_keys($where);*/
+        $attributes = array_keys($where);
+        if ($attributes) {
+            $sql = implode("AND", array_map(fn($attr) => "$attr = :$attr", $attributes));
+            $stmt = self::prepare("SELECT * FROM $tableName WHERE $sql");
+            foreach ($where as $key => $item) {
+                $stmt->bindValue(":$key", $item);
+            }
+            $stmt->execute();
+            return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        }
+
         $stmt = self::prepare("SELECT * FROM $tableName");
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
@@ -63,7 +73,14 @@ abstract class DbModel extends Model
         foreach ($where as $key => $item) {
             $stmt->bindValue(":$key", $item);
         }
-        return $stmt->execute();
+        try {
+            return $stmt->execute();
+        } catch (\Exception $e) {
+            Application::$app->session->setFlash("activesub", "User has active subscription - Cannot delete!");
+            exit();
+
+        }
+        return $stmt->execute() ?? false;
     }
 
     public static function update($wherecol, $where, $model) //[user_email => mo@gmail.com, user_firstname => Jeylani]
@@ -73,17 +90,17 @@ abstract class DbModel extends Model
         $attributes = array_keys($where);
         $column = array_keys($wherecol);
         $sql = implode("AND", array_map(fn($attr) => "$attr = :$attr", $attributes));
-        $sqlcol = implode(array_map(fn($col) => "$col = :$col", $column));
+        $sqlcol = implode(",", array_map(fn($col) => "$col = :$col", $column));
         $stmt = self::prepare("UPDATE $tableName SET $sqlcol WHERE $sql");
-        foreach ($wherecol as $key => $item){
-        $stmt->bindValue(":$key", $item);
-    }
+        foreach ($wherecol as $key => $item) {
+            $stmt->bindValue(":$key", $item);
+        }
         foreach ($where as $key => $item) {
             $stmt->bindValue(":$key", $item);
         }
 
-            $stmt->execute();
-           return $stmt->fetchObject(static::class);/*Return the instance of the calling class (fetchObject returns object by  default))*/
+        $stmt->execute();
+        return $stmt->fetchObject(static::class) ?? false;/*Return the instance of the calling class (fetchObject returns object by  default))*/
     }
 
     public static function prepare($sql)

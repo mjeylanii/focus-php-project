@@ -16,7 +16,7 @@
                             <li>Email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <button value="1100" class="w-100 btn btn-lg btn-success add">Subscribe</button>
+                        <button value="991" class="w-100 btn btn-lg btn-success add">Subscribe</button>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@
                             <li>Priority email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <button vlaue="999" class="w-100 btn btn-lg btn-success add">Subscribe
+                        <button vlaue="992" class="w-100 btn btn-lg btn-success add">Subscribe
                         </button>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
                                 <li>40gb bandwidth</li>
                                 <li>1 month</li>
                             </ul>
-                            <button href="/services?id=444" class="w-100 btn btn-lg btn-success add">Add to subscription
+                            <button value="1001" class="w-100 btn btn-lg btn-success add">Add to subscription
                             </button>
                         </div>
                     </div>
@@ -92,10 +92,9 @@
                                 <li>20 users included</li>
                                 <li>10 GB of storage</li>
                             </ul>
-                            <button href="/services" type="button" class="w-100 btn btn-lg btn-success add" value="887">
-                                Add
-                                to
-                                subscription
+                            <button href="/services" type="button" class="w-100 btn btn-lg btn-success add"
+                                    value="1002">
+                                Add to subscription
                             </button>
                         </div>
                     </div>
@@ -117,7 +116,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col text-center"><a id="proceedCheckout" href="/checkout" class="btn btn-lg btn-secondary d-none">Proceed to payment</a></div>
+            <div class="col text-center"><a id="proceedCheckout" href="/checkout"
+                                            class="btn btn-lg btn-secondary d-none">Proceed to payment</a></div>
         </div>
 </main>
 <script>

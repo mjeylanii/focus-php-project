@@ -61,26 +61,27 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Price</th>
-                <th scope="col">Detail</th>
-                <th scope="col">Update Details</th>
-                <th scope="col">Delete product</th>
+                <th scope="col">User ID</th>
+                <th scope="col">Payment ID</th>
+                <th scope="col">Product ID</th>
+                <th scope="col">Checkout date</th>
+                <th scope="col">View details</th>
             </tr>
             </thead>
             <tbody>
-            <!--    --><?php
-            /*            $sql = $conn->query("SELECT * FROM products");
-                        while ($products = $sql->fetch(PDO::FETCH_ASSOC)) {
-                            echo '
-                                <tr class="">
-                                 <td  class="align-middle">' . $products['product_id'] . '</td>' .
-                                '<td  class="align-middle">' . $products['product_name'] . '</td>' .
-                                '<td  class="align-middle"><0></0>' . $products['product_price'] . '</td>' .
-                                '<td  class="align-middle">' . $products['product_details'] . '</td>' .
-                                '<td><a class="btn btn-secondary" href="modules/update-product.php?productId="' . $products['product_id'] . '</a><span data-feather="edit"></span></td>' .
-                                '<td><a class="btn btn-danger text-light ms-1" href="modules/delete-verify-users.php?delete=1&id=' . $products["product_id"] . '"><span data-feather="trash-2"></span></a></td>';
-                        } */ ?>
+            <?php
+            $orders = $params;
+            foreach ($orders as $key => $order) {
+                echo '
+                     <tr class="">
+                     <td  class="align-middle">' . $order['order_id'] . '</td>' .
+                    '<td  class="align-middle">' . $order['user_id'] . '</td>' .
+                    '<td  class="align-middle">' . $order['payment_id'] . '</td>' .
+                    '<td  class="align-middle">' . $order['product_id'] . '</td>' .
+                    '<td  class="align-middle">' . $order['order_date'] . '</td>' .
+                    '<td class="align-middle"><button  class="btn btn-secondary text-light ms-1" ' . $order["order_id"] . '"><span data-feather="eye"></span></button></td>';
+            }
+            ?>
             </tbody>
         </table>
 </main>

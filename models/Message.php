@@ -58,27 +58,17 @@ class Message extends \app\core\MessageModel
         return $this->message_txt;
     }
 
-    public function getProductPrice(): int
-    {
-        return $this->product_price;
-    }
+
 
     public function getAllMessages(): array
     {
-
         return self::getAll(self::class);
     }
 
-    public function getMessage($where): array
-    {
-
-        return self::findOne($where, self::class);
-    }
 
     public function deleteMessage($where): bool
     {
 
-        var_dump(self::delete($where, self::class));
         return self::delete($where, self::class);
     }
 

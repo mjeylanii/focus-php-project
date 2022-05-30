@@ -4,7 +4,7 @@ namespace app\core;
 
 use app\models\User;
 
-abstract class CheckoutModel extends DbModel
+abstract class OrderModel extends DbModel
 {
 
 }
