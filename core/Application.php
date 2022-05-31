@@ -30,7 +30,6 @@ class Application
      * In the Application we first create a constructor to create an instance of the router*/
     public function __construct($rootPath, array $config)
     {
-        $this->user = null;
         $this->userClass = $config['userClass'];
         $this->productClass = $config['productClass'];
         self::$ROOT_DIR = $rootPath;
@@ -47,6 +46,9 @@ class Application
         if ($userId) {
             $key = (new $this->userClass)->primaryKey();
             $this->user = $this->userClass::findOne([$key => $userId], $this->userClass);
+        }
+        else{
+            $this->user= null;
         }
 
     }

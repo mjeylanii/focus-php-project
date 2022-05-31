@@ -4,13 +4,13 @@ namespace app\models;
 
 use app\core\Application;
 use app\core\DbModel;
+use app\core\FileUploadModel;
 
-class PictureUpload extends DbModel
+class PictureUpload extends FileUploadModel
 {
     public int $img_id = 0;
-    public string $img_adress = '';
+    public string $img_adress = '3551739.jpg';
     public int $user_id = 0;
-
 
     public function save()
     {
@@ -39,31 +39,34 @@ class PictureUpload extends DbModel
         return [];
     }
 
-    public static function fileUpload()
+
+    public function fileUpload()
     {
-        $errors = array();
-        $file_name = $_FILES['image']['name'];
-        $file_size = $_FILES['image']['size'];
-        $file_tmp = $_FILES['image']['tmp_name'];
-        $file_type = $_FILES['image']['type'];
-        $file_ext = strtolower(end(explode('.', $_FILES['image']['name'])));
-        $extensions = array("jpeg", "jpg", "png");
+        if ($_FILES) {
+            $errors = array();
+            $file_name = random_int(454534, 3242436);
+            $file_size = $_FILES['image']['size'];
+            $file_tmp = $_FILES['image']['tmp_name'];
+            $file_type = $_FILES['image']['type'];
+            $exploded = explode('.', $_FILES['image']['name']);
+            $file_ext = strtolower(end($exploded));
+            $extensions = array("jpeg", "jpg", "png");
 
-        if (in_array($file_ext, $extensions) === false) {
-            $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
-            header("location: messages.php?islem=6");
-        }
-
-        if ($file_size > 2097152) {
-            $errors[] = 'File size must be excately 2 MB';
-        }
-        if (empty($errors) == true) {
-            if(move_uploaded_file($file_tmp, "uploads/" . $file_name)){
+            if (in_array($file_ext, $extensions) === false) {
+                $errors[] = "extension not allowed, please choose a JPEG or PNG file.";
             }
 
-            return true;
-        } else {
-            print_r($errors);
+            if ($file_size > 2097152) {
+                $errors[] = 'File size must be excately 2 MB';
+            }
+            if (empty($errors) == true) {
+                if (move_uploaded_file($file_tmp, "images/user_images/" . $file_name . '.' . $file_ext)) {
+                    $this->img_adress = $file_name . '.' . $file_ext;
+                    return true;
+                }
+            } else {
+                print_r($errors);
+            }
         }
         return false;
 

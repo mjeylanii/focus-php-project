@@ -53,6 +53,7 @@ $app = new Application(dirname(__DIR__), $config);//Create an instance of the Ap
  * The get method takes a path and method as a parameter.
  * CTRL+click on get() for more info*/
 $app->router->get('/profile', [ProfileController::class, 'profile']);
+$app->router->post('/profile', [ProfileController::class, 'profile']);
 $app->router->get('/profile/{id:\d+}/{username}', [ProfileController::class, 'login']);
 $app->router->get('/', [SiteController::class, 'home']);
 $app->router->get('/home', [SiteController::class, 'home']);

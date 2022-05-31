@@ -6,23 +6,24 @@ use app\core\Model;
 
 class Form
 {
-    public static function begin($action, $method)
+    public static function begin($action, $method, $options = [])
     {
-        $style = "rounded-md mt-2 p-5 w-50 mx-auto";
-/*        echo sprintf("<form> class="%s" action="%s" method="%s">" $style, $action, $method);*/
-      /*  echo '<pre>';
-        var_dump( sprintf('< form > class = "%s" action = "%s" method = "%s" >', $style, $action, $method));
-        echo '</pre>';*/
+        $attributes = [];
+        foreach ($options as $key => $value) {
+            $attributes[] = "$key=\"$value\"";
+        }
+        echo sprintf('<form action="%s" method="%s" %s>', $action, $method, implode(" ", $attributes));
         return new Form();
     }
 
     public static function end()
     {
-        echo "</form>";
+        echo '</form>';
     }
 
-    public function field(Model $model, $attribute): Field
+    public function field(Model $model, $attribute)
     {
         return new Field($model, $attribute);
     }
+
 }

@@ -6,6 +6,8 @@ use app\core\Application;
 use app\core\Request;
 use app\core\Response;
 use app\models\LoginForm;
+use app\models\PictureUpload;
+use app\models\Profile;
 use app\models\User;
 
 class AuthController extends Controller
@@ -37,16 +39,16 @@ class AuthController extends Controller
         $this->setLayout('auth');
         $errors = [];
         $user = new User();
+        $image = new PictureUpload();
         if ($request->isPost()) {
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
                 Application::$app->session->setFlash('success', 'Successfully registered - Please enter your details to login');
                 $response->redirect('/registered');
                 exit();
-            }
-            else{
-               Application::$app->session->setFlash('failregister', 'User with this E-mail already exists');
-               $response->redirect('/register');
+            } else {
+                Application::$app->session->setFlash('failregister', 'User with this E-mail already exists');
+                $response->redirect('/register');
             }
 
         }

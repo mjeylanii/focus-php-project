@@ -98,9 +98,15 @@ abstract class DbModel extends Model
         foreach ($where as $key => $item) {
             $stmt->bindValue(":$key", $item);
         }
-
-        $stmt->execute();
-        return $stmt->fetchObject(static::class) ?? false;/*Return the instance of the calling class (fetchObject returns object by  default))*/
+        try {
+            $stmt->execute();
+        } catch (\Exception $e) {
+            echo '<pre>';
+            var_dump($e);
+            echo '</pre>';
+            exit();
+        }
+        /*Return the instance of the calling class (fetchObject returns object by  default))*/
     }
 
     public static function prepare($sql)

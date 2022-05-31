@@ -3,10 +3,17 @@
 if (\app\core\Application::isGuest()): ?>
     <div class="container-fluid text-center">
         <div class="row ">
-            <div class="container col-12 text-center w-25 ">
-                <img class="img-fluid"
-                     src="https://picsum.photos/200/300?random=1"
-                     alt="">
+            <div class="container text-center p-3 w-25 h-25 p-5 ">
+                <?php if ($params) {
+                    $imgArr = json_decode(json_encode($params), true);
+                    $path = 'images/user_images/' . $imgArr['img_adress'];
+                    if (file_exists($path)) {
+                        echo ' <img style="height: 240px; weight: 50px;" class="rounded" src="images/user_images/' . $imgArr['img_adress'] . '" alt="">';
+                    } else {
+                        echo '<img class="img-fluid" src="https://picsum.photos/200/300?random=1" alt="">';
+                    }
+                } ?>
+                <?php ?>
             </div>
             <div class="container col-12 ">
                 <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal"
@@ -118,38 +125,17 @@ if (\app\core\Application::isGuest()): ?>
             </table>
         </div>
     </div>
+
     <!-- ============================================== CONTAINER: END ============================================== -->
 <?php else: ?>
     <?php \app\core\Application::$app->router->response->setStatusCode('403'); ?>
-    <div class="text-center">
+    <div class="text-center container-fluid h-75">
         <div class="alert alert-danger"><h1>You do not have access to this page!</h1>
             <h2>Please login or contact us</h2></div>
         <p class="lead">Redirecting you to the home page...</p>
-        <?php echo ' <meta http-equiv="refresh" 
+        <?php echo ' <meta http-equiv="refresh"
           content="2; url=/" />' ?>
     </div>
 <?php endif; ?>
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Add product</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/profile" method="POST">
-                    <div class="mb-3">
-                        <label for="formFileDisabled" class="form-label">Disabled file input example</label>
-                        <input class="form-control" type="file" id="formFileDisabled" disabled>
-                    </div>
-                    <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Add</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button name="submit" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
+
 

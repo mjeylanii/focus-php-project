@@ -4,24 +4,38 @@ namespace app\core\form;
 
 use app\core\Model;
 
-class Field
+class Field extends BaseField
 {
-   public Model $model;
-   public string $attribute;
+    const TYPE_TEXT = 'text';
+    const TYPE_PASSWORD = 'password';
+    const TYPE_FILE = 'file';
 
-    /**
-     * @param Model $model
-     * @param string $attribute
-     */
+
     public function __construct(Model $model, string $attribute)
     {
-        $this->model = $model;
-        $this->attribute = $attribute;
+        $this->type = self::TYPE_TEXT;
+        parent::__construct($model, $attribute);
     }
 
-    public function __toString(): string
+    public function renderInput()
     {
-      return '1';
+        return sprintf('<input type="%s" class="form-control%s" name="%s" value="%s">',
+            $this->type,
+            $this->model->hasError($this->attribute) ? ' is-invalid' : '',
+            $this->attribute,
+            $this->model->{$this->attribute},
+        );
     }
 
+    public function passwordField()
+    {
+        $this->type = self::TYPE_PASSWORD;
+        return $this;
+    }
+
+    public function fileField()
+    {
+        $this->type = self::TYPE_FILE;
+        return $this;
+    }
 }

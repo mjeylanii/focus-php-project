@@ -51,7 +51,9 @@ use \app\core\Application;
         body {
             transition: 1s;
         }
-
+       html, body{
+           height: 100vh;
+       }
         #contact {
             background-image: url(images/contact-bg.png) !important;
             background-size: auto;
@@ -66,6 +68,7 @@ use \app\core\Application;
 {{content}}
 
 <?php include "includes/footer.phtml"; ?>
+
 <script src="js/dark-mode-switch.min.js"></script>
 <script src="js/navbar-switch.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"
@@ -83,5 +86,6 @@ use \app\core\Application;
        }
     });
 </script>
+<?php include('includes/modals/file_upload.php') ?>
 </body>
 </html>

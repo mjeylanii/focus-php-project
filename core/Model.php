@@ -105,5 +105,15 @@ abstract class Model
         return $this->errors[$attribute] ?? false;
     }
 
+    public function labels()
+    {
+        return [];
+    }
+
+    public function getLabel($attribute)
+    {
+        return $this->labels()[$attribute] ?? $attribute;
+    }
+
 
 }

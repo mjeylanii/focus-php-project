@@ -27,12 +27,12 @@ class PaymentController extends Controller
                 }
             } else {
                 Application::$app->session->setFlash('nopayment', 'PaymentForm unsuccessful = please try again');
-                $response->redirect('/order');
+                $response->redirect('/checkout');
             }
         }
         $allProducts = Order::getAll(Order::class);
         $this->setLayout('auth');
-        return $this->render('order');
+        return $this->render('checkout');
     }
 
     public function paymentconfirm()

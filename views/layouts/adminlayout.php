@@ -19,8 +19,14 @@
     <link rel="stylesheet" type="text/css" href="css/dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <title>Dashboard</title>
+    <style>
+        html, body{
+            height: 100vh;
+        }
+    </style>
 </head>
 <body>
+<?php if (\app\core\Application::$app::isGuest()): ?>
 <?php if (\app\core\Application::$app->user->getType() == 1): ?>
 <?php
 include 'includes/admin.navbar.phtml';
@@ -89,6 +95,16 @@ include 'includes/admin.navbar.phtml';
           content="2; url=/" />' ?>
     </div>
 
+<?php endif; ?>
+<?php else: ?>
+    <?php \app\core\Application::$app->router->response->setStatusCode('403'); ?>
+    <div class="text-center container-fluid mt-5 ">
+        <div class="alert alert-danger"><h1>You do not have access to this page!</h1>
+            <h2>Please contact the system admin to get access</h2></div>
+        <p class="lead">Redirecting you to the home page... <a class="text-muted" href="/home">Click this link if you are not redirected</a></p>
+        <?php echo ' <meta http-equiv="refresh"
+          content="2; url=/" />' ?>
+    </div>
 <?php endif; ?>
 
 

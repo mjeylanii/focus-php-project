@@ -1,9 +1,4 @@
 <header id="home" class="section ">
-    <div class="header_main">
-        <!-- Navbar -->
-        <!-- Navbar end -->
-    </div>
-
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 d-flex flex-column gap-4 justify-content-center">
@@ -26,7 +21,7 @@
                 <div class="input-group mb-3 mt-5">
                     <input type="text" class="form-control" placeholder="Enter domain name here">
                     <div class="input-group-append">
-                        <a class="text-light btn btn-dark rounded-end p-3" href="#">Search</a>
+                        <a class="text-light btn btn-dark rounded-end p-3" href="/contact">Search</a>
                     </div>
                 </div>
             </div>
@@ -115,7 +110,7 @@
 <div class="container mt-5">
     <div class="row row-cols-1 row-cols-md-3 g-5">
         <div class="col mb-3">
-            <div class="card h-100 p-5 rounded bg-light">
+            <div class="card border-success border-4 h-100 p-5 rounded bg-light">
                 <a class="card-img-top " href="#"><img src="images/icon-1.png"></a>
                 <div class="card-body">
                     <h2 class="card-title">Shared Hosting</h2>
@@ -125,7 +120,7 @@
             </div>
         </div>
         <div class="col mb-3">
-            <div class="card h-100 p-5 bg-light">
+            <div class="card border-success border-4 h-100 p-5 bg-light">
                 <a class="card-img-top" href="#"><img src="images/icon-2.png"></a>
                 <div class="card-body">
                     <h2 class="card-title">Dedicated Hosting</h2>
@@ -135,7 +130,7 @@
             </div>
         </div>
         <div class="col mb-3">
-            <div class="card h-100 p-5 bg-light">
+            <div class="card border-success border-4 h-100 p-5 bg-light">
                 <a class="card-img-top" href="#"><img src="images/icon-3.png"></a>
                 <div class="card-body">
                     <h2 class="card-title">Domain Registration</h2>
@@ -149,7 +144,7 @@
 <div class="container mb-5">
     <div class="row row-cols-1 row-cols-md-3 g-5">
         <div class="col mb-3 ">
-            <div class="card h-100 p-5 bg-light">
+            <div class="card border-success border-4  border-success border-4 h-100 p-5 bg-light">
                 <a class="card-img-top w-25" href="#"><img src="images/icon-4.png"></a>
                 <div class="card-body">
                     <h2 class="card-title">Shared Hosting</h2>
@@ -159,7 +154,7 @@
             </div>
         </div>
         <div class="col-sm-4  mb-3">
-            <div class="card h-100 p-5 bg-light">
+            <div class="card border-success border-4 h-100 p-5 bg-light">
                 <a class="card-img-top w-25" href="#"><img src="images/icon-5.png"></a>
                 <div class="card-body">
                     <h2 class="card-title">Dedicated Hosting</h2>
@@ -169,7 +164,7 @@
             </div>
         </div>
         <div class="col-sm-4 mb-3">
-            <div class="card h-100 p-5 bg-light">
+            <div class="card border-success border-4 h-100 p-5 bg-light">
                 <a class="card-img-top" href="#"><img src="images/icon-6.png"></a>
                 <div class="card-body">
                     <h2 class="card-title">Domain Registration</h2>
@@ -194,34 +189,37 @@
     <div class="container ">
         <div class="row justify-content-center">
             <div class="col-md-6 py-5">
-                <form class="row g-1 px-3" action="" method="GET">
-                    <div class="input-group ">
-                        <span class="input-group-text " id="basic-addon1">Name&nbsp;&nbsp;&nbsp;</span>
-                        <input type="text" class="form-control" placeholder="Name" name="name">
+                <form class="rounded-md shadow bg-success mt-2 p-5 rounded  mx-auto " action="/contact" method="POST">
+                    <div class="form-floating mb-3">
+                        <input id="floatingName" type="text" class="form-control rounded-pill"
+                               placeholder="Name" name="message_name">
+                        <label class="" for="floatingName">Name</label>
                     </div>
-                    <div class="input-group col-md-12">
-                        <span class="input-group-text" id="basic-addon1">Email&nbsp;&nbsp;&nbsp;&nbsp;</span>
-                        <input type="text" class="form-control" placeholder="Email" name="email">
+                    <div class="form-floating mb-3">
+                        <input id="floatingEmail" type="text" class="form-control  rounded-pill "
+                               placeholder="Email" name="message_email">
+                        <label for="floatingEmail">Email</label>
                     </div>
-                    <div class="input-group col-md-12">
-                        <span class="input-group-text" id="basic-addon1">Phone&nbsp;&nbsp;</span>
-                        <input type="tel" class="form-control" placeholder="Phone" name="num">
+                    <div class="form-floating mb-3">
+                        <input id="floatingPhone" type="tel" class="form-control rounded-pill "
+                               placeholder="Phone" name="message_phone">
+                        <label for="floatingPhone">Phone</label>
                     </div>
-                    <div class="input-group col-md-12">
-                        <span class="input-group-text" id="basic-addon1">Message</span>
-                        <textarea class="form-control" placeholder="Massage" rows="5" id="comment"
-                                  name="msg"></textarea>
-                    </div>
-                    <div class="form-floating mx-auto col-4">
-                        <input class="btn btn-lg btn-success ms-5" type="submit" value="Send" name="send_msg">
-                    </div>
-                </form>
+                    <div class="form-floating mb-3">
+                   <textarea id="floatingMsg" class="form-control " placeholder="Message" rows="5" name="message_txt"></textarea>
+                    <label for="floatingMsg">Message</label>
+             </div>
+            <div class="form-floating mx-auto col-4">
+                <input class="btn btn-lg btn-success ms-5 rounded-pill bg-primary" type="submit" value="Send"
+                       name="send_msg">
             </div>
-            <div class="col-md-6 d-none d-md-block">
-                    <img src="images/img-2.png" style="max-width: 100%;" alt="">
-            </div>
+            </form>
+        </div>
+        <div class="col-md-6 d-none d-md-block">
+            <img src="images/img-2.png" style="max-width: 100%;" alt="">
         </div>
     </div>
+</div>
 </div>
 
 <!-- javascript -->
