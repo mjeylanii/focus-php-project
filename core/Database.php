@@ -64,11 +64,10 @@ class Database
     {
         $string = implode(",", array_map(fn($m) => "('$m')", $migrations));
 
-        $stmt = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES
-         $string
-");
+        $stmt = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES ($string)");
         $stmt->execute();
     }
+
     public function prepare($sql)
     {
         return $this->pdo->prepare($sql);

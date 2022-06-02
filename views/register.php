@@ -1,16 +1,7 @@
 <div class="form-register d-flex flex-column w-100 text-center mt-5">
-    <div class="text-center">
-        <?php if (\app\core\Application::$app->session->getFlash('failreigster')):?>
-            <div class="alert alert-success text-center fw-bolder">
-                <?php echo \app\core\Application::$app->session->getFlash('failregister') ?>
-            </div>
-        <?php endif; ?>
-    </div>
     <img class="img-fluid mx-auto bg-light" src="images/logo.png" alt="logo" width="72" height="54">
     <form class="rounded-md mt-2 p-5  w-50 mx-auto " action="" method="POST">
-
         <div class="row">
-
             <div class="col">
 
                 <div class="form-floating mb-2">
@@ -32,7 +23,7 @@
                            type="text" name="user_lastname"
                            value="<?php echo @$model->user_lastname ?>" placeholder="Surname"
                            required>
-                    <label id="floatingtext" for="floatingInput">Last name </label>
+                    <label id="floatingtext" for="floatingInput">Last name</label>
                     <div class="invalid-feedback">
 
                     </div>
@@ -47,7 +38,11 @@
                    required>
             <label for="floatingInput">Email</label>
             <div class="invalid-feedback">
-
+             <?php if($params){
+                 echo '<pre>';
+                  var_dump($params);
+                  echo '</pre>';
+             } ?>
             </div>
         </div>
         <div class="form-floating mb-2">

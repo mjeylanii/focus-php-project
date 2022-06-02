@@ -32,6 +32,7 @@ class Order extends OrderModel
         return 'order_id';
     }
 
+
     public function attributes(): array
     {
         return ['order_id', 'user_id', 'payment_id', 'product_id'];

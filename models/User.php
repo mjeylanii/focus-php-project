@@ -11,6 +11,7 @@ class User extends UserModel
     const STATUS_DELETED = 'DOES NOT EXIST';
     const USER_ADMIN = 1;
     const USER_NORMAL = 2;
+    const RULE_EXISTS = '';
     public int $user_id = 0;
     public string $user_firstname = '';
     public string $user_lastname = '';
@@ -44,7 +45,7 @@ class User extends UserModel
         return [
             'user_firstname' => [self::RULE_REQUIRED],
             'user_lastname' => [self::RULE_REQUIRED],
-            'user_email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [self::RULE_UNIQUE, 'class' => self::class]],
+            'user_email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [self::RULE_UNIQUE, 'class' => self::class], [self::RULE_EXISTS, 'exists' => $this->user_email]],
             'user_password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 50]],
             'passwordConfirm' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'user_password']]
         ];

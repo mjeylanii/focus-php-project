@@ -3,7 +3,6 @@
 namespace app\core\form;
 
 
-
 use app\core\Model;
 
 abstract class BaseField
@@ -15,8 +14,8 @@ abstract class BaseField
     /**
      * Field constructor.
      *
-     * @param \thecodeholic\phpmvc\Model $model
-     * @param string          $attribute
+     * @param \app\core\Model $model
+     * @param string $attribute
      */
     public function __construct(Model $model, string $attribute)
     {

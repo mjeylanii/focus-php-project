@@ -14,6 +14,7 @@ abstract class Model
     public const RULE_MAX = 'max';
     public const RULE_MATCH = 'match';
     public const RULE_UNIQUE = 'unique';
+    public const RULE_EXISTS = 'exists';
 
     public function loadData($data)
     {
@@ -22,7 +23,7 @@ abstract class Model
                 $this->{$key} = $value;
             }
         }
-        return false;
+        return true;
     }
 
     abstract public function rules(): array;
@@ -60,6 +61,7 @@ abstract class Model
                     $stmt->execute();
                     $record = $stmt->fetchObject();
                     if ($record) {
+                        $this->addErrorForRule($attribute, self::RULE_EXISTS, ['user_email' => $value]);
                         $this->addErrorForRule($attribute, self::RULE_UNIQUE, ['field' => $attribute]);
                     }
 
@@ -95,13 +97,13 @@ abstract class Model
             self::RULE_MIN => 'Minimum length must be {min}',
             self::RULE_MAX => 'Password maximum length must be {max}',
             self::RULE_MATCH => 'Password do not match',
-            self::RULE_UNIQUE => 'A record of this was already found'
+            self::RULE_UNIQUE => "A record of this {} was already found",
+            self::RULE_EXISTS => "A record of this E-mail {user_email} was already found"
         ];
     }
 
     public function hasError($attribute)
     {
-
         return $this->errors[$attribute] ?? false;
     }
 
@@ -114,6 +116,5 @@ abstract class Model
     {
         return $this->labels()[$attribute] ?? $attribute;
     }
-
 
 }

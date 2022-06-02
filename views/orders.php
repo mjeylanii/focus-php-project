@@ -19,34 +19,49 @@
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add product</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Order details</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form action="" method="POST">
                         <div class="input-group flex-nowrap mb-3">
-                            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-list-ol"></i></span>
-                            <input type="text" name="id" class="form-control" placeholder="Product ID" aria-label="ID"
-                                   aria-describedby="addon-wrapping" required>
+                            <span class="input-group-text" id="addon-wrapping"><i data-feather="hash">Order</i></span>
+                            <input id="orderId" type="text" name="orderId" class="form-control" placeholder="Order ID"
+                                   aria-label="ID"
+                                   aria-describedby="addon-wrapping" required disabled>
                         </div>
                         <div class="input-group flex-nowrap mb-3">
-                            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-bag-fill"></i></span>
-                            <input type="text" name="name" class="form-control" placeholder="Product name"
-                                   aria-label="Product name" aria-describedby="addon-wrapping" required>
+                            <span class="input-group-text" id="addon-wrapping"><i data-feather="user">User</i></span>
+                            <input id="userId" type="text" name="user_id" class="form-control" placeholder="User ID"
+                                   aria-label="ID"
+                                   aria-describedby="addon-wrapping" required disabled>
+                        </div>
+                        <div class="input-group flex-nowrap mb-3">
+                            <span class="input-group-text" id="addon-wrapping"><i data-feather="user"></i></span>
+                            <input id="userName" type="text" name="user_name" class="form-control"
+                                   placeholder="User Name"
+                                   aria-label="Product name" aria-describedby="addon-wrapping" required disabled>
                         </div>
 
                         <div class="input-group flex-nowrap mb-3">
-                            <span class="input-group-text" id="addon-wrapping"><i class="bi bi-tags"></i></span>
-                            <input type="text" name="price" class="form-control" placeholder="Product price"
-                                   aria-label="Price" aria-describedby="addon-wrapping" required>
+                            <span class="input-group-text" id="addon-wrapping"><i data-feather="shopping-bag"></i></span>
+                            <input id="productName" type="text" name="product_name" class="form-control"
+                                   placeholder="Product name"
+                                   aria-label="Price" aria-describedby="addon-wrapping" required disabled>
                         </div>
                         <div class="input-group flex-nowrap mb-3">
                             <span class="input-group-text" id="addon-wrapping"><i
-                                        class="bi bi-file-text-fill"></i></span>
-                            <input type="text" name="desc" class="form-control" placeholder="Product description"
-                                   aria-label="description" aria-describedby="addon-wrapping" required>
+                                        data-feather="credit-card"></i></span>
+                            <input type="text" name="payment_type" class="form-control" placeholder="Payment type"
+                                   aria-label="description" aria-describedby="addon-wrapping" id="paymentType" required
+                                   disabled>
                         </div>
-                        <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Add</button>
+                        <div class="input-group flex-nowrap mb-3">
+                            <span class="input-group-text" id="addon-wrapping">  <i data-feather="calendar"></i></span>
+                            <input id="orderDate" type="text" name="order_date" class="form-control"
+                                   placeholder="Payment type"
+                                   aria-label="description" aria-describedby="addon-wrapping" required disabled>
+                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -60,8 +75,8 @@
         <table class="table table-striped table-sm">
             <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">User ID</th>
+                <th scope="col">Order #</th>
+                <th scope="col">User ID #</th>
                 <th scope="col">Payment ID</th>
                 <th scope="col">Product ID</th>
                 <th scope="col">Checkout date</th>
@@ -79,10 +94,10 @@
                     '<td  class="align-middle">' . $order['payment_id'] . '</td>' .
                     '<td  class="align-middle">' . $order['product_id'] . '</td>' .
                     '<td  class="align-middle">' . $order['order_date'] . '</td>' .
-                    '<td class="align-middle"><button  class="btn btn-secondary text-light ms-1" ' . $order["order_id"] . '"><span data-feather="eye"></span></button></td>';
+                    '<td class="align-middle"><button data-bs-toggle="modal" data-bs-target="#staticBackdrop"  class="btn btn-secondary text-light ms-1 viewOrder" value="' . $order["order_id"] . '"><span data-feather="eye"></span></button></td>';
             }
             ?>
             </tbody>
         </table>
 </main>
-
+<script src="js/order_controller.js"></script>

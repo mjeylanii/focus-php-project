@@ -18,8 +18,4 @@ class Controller
         return Application::$app->router->renderView($view, $params, $json);
     }
 
-    public function foo()
-    {
-        
-    }
 }

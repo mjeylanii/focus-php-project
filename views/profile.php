@@ -12,7 +12,8 @@ if (\app\core\Application::isGuest()): ?>
                     } else {
                         echo '<img class="img-fluid" src="https://picsum.photos/200/300?random=1" alt="">';
                     }
-                } ?>
+                } else
+                    echo '<img class="img-fluid" src="https://picsum.photos/200/300?random=1" alt="">'; ?>
                 <?php ?>
             </div>
             <div class="container col-12 ">
@@ -77,7 +78,7 @@ if (\app\core\Application::isGuest()): ?>
                             '<td>' . $checkoutArr[4] . '</td>';
                     }
                     ?>
-                    <td class="text-center" colspan="100%"><a href="services.php" class="btn btn-light"><i
+                    <td class="text-center" colspan="100%"><a href="/services" class="btn btn-light"><i
                                     class="bi bi-plus"></i></a></td>
                 </tr>
                 </tbody>
@@ -97,11 +98,10 @@ if (\app\core\Application::isGuest()): ?>
                         }
                     } ?>
                     '
+                    <th scope="col">Payment ID</th>
                     <th scope="col">Payment Type</th>
-                    <th scope="col">Card Name</th>
-                    <th scope="col">Cardholder</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Card number</th>
+                    <th scope="col">Card Address</th>
+                    <th scope="col">Card Address</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -110,9 +110,7 @@ if (\app\core\Application::isGuest()): ?>
                     if ($paymentArr) {
                         echo '<td>' . $paymentArr[0] . '</td>' .
                             '<td>' . $paymentArr[1] . '</td>' .
-                            '<td>' . $paymentArr[2] . '</td>' .
-                            '<td>' . $paymentArr[3] . '</td>' .
-                            '<td>' . $paymentArr[4] . '</td>';
+                            '<td>' . $paymentArr[6] . '</td>' ;
                     }
                     ?>
                 </tr>

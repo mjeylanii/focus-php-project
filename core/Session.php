@@ -44,7 +44,6 @@ class Session
 
     public function getFlash($key)
     {
-
         return $_SESSION[self::FLASH_KEY][$key]['value'] ?? false;
     }
 
@@ -57,7 +56,6 @@ class Session
             }
         }
         $_SESSION[self::FLASH_KEY] = $flashMessages;
-
     }
 
 }

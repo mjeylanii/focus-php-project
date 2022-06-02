@@ -78,6 +78,6 @@ class Message extends \app\core\MessageModel
         $wherecol = [
             'message_status' => self::STATUS_READ,
         ];
-        return self::update($wherecol, $where, self::class);
+        return self::update($wherecol, $where, self::class) ?? false;
     }
 }

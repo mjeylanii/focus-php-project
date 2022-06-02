@@ -108,7 +108,17 @@ abstract class DbModel extends Model
         }
         /*Return the instance of the calling class (fetchObject returns object by  default))*/
     }
-
+    public static function findViewOrders($where) //[user_email => mo@gmail.com, user_firstname => Jeylani]
+    {
+        $attributes = array_keys($where);
+        $sql = implode("AND", array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $stmt = self::prepare("SELECT * FROM customerorders WHERE $sql");
+        foreach ($where as $key => $item) {
+            $stmt->bindValue(":$key", $item);
+        }
+        $stmt->execute();
+        return $stmt->fetchObject(static::class);/*Return the data in the  instance of the calling class (fetchObject returns object by  default))*/
+    }
     public static function prepare($sql)
     {
         return Application::$app->db->pdo->prepare($sql);

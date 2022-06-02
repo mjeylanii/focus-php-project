@@ -15,7 +15,6 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-
         $this->setLayout('adminlayout');
         return $this->render('dashboard');
     }
@@ -24,6 +23,13 @@ class AdminController extends Controller
     {
         $order = new Order();
         if ($request->isGet()) {
+            if($order->loadData($request->getBody())){
+                if(array_key_exists('fetch_orders', $request->getBody())){
+                    $orders = $order::findViewOrders(['order_id' => $order->order_id]);
+                    return json_encode($orders);
+                }
+            }
+
             $orders = $order->getAll($order::class);
         }
         $this->setLayout('adminlayout');
@@ -90,7 +96,7 @@ class AdminController extends Controller
                     Application::$app->session->setFlash('active', "User verified");
                 }
             } else {
-                Application::$app->session->setFlash('notactive', "User not delete - User not verified");
+                Application::$app->session->setFlash('notactive', "Could not verify - Please try again");
             }
         }
         $users = User::getAll(User::class);

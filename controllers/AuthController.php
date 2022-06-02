@@ -43,14 +43,13 @@ class AuthController extends Controller
         if ($request->isPost()) {
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
+                $image->save();
                 Application::$app->session->setFlash('success', 'Successfully registered - Please enter your details to login');
                 $response->redirect('/registered');
-                exit();
             } else {
-                Application::$app->session->setFlash('failregister', 'User with this E-mail already exists');
-                $response->redirect('/register');
+                $response->redirect('/registered');
+                Application::$app->session->setFlash('fail_register', $user->errors['user_email'][0]);
             }
-
         }
         return $this->render('register', [
             'model' => $user

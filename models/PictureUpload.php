@@ -59,7 +59,10 @@ class PictureUpload extends FileUploadModel
             if ($file_size > 2097152) {
                 $errors[] = 'File size must be excately 2 MB';
             }
-            if (empty($errors) == true) {
+            if (file_exists("images/user_images/" . $file_name . '.' . $file_ext)) {
+                $errors[] = 'File already exists';
+            }
+            if (empty($errors)) {
                 if (move_uploaded_file($file_tmp, "images/user_images/" . $file_name . '.' . $file_ext)) {
                     $this->img_adress = $file_name . '.' . $file_ext;
                     return true;

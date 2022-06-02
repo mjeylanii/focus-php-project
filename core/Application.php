@@ -22,7 +22,6 @@ class Application
     public Session $session;
     public Database $db;
     public ?DbModel $user = null;
-    public ?DbModel $products = null;
 
 
     /*
@@ -34,6 +33,7 @@ class Application
         $this->productClass = $config['productClass'];
         self::$ROOT_DIR = $rootPath;
         self::$app = $this;
+        /*Here we declare the request and response class instances*/
         $this->request = new Request();
         $this->response = new Response();
         /*After declaring the request and response instances we can pass them into the router, so we can use
@@ -41,7 +41,6 @@ class Application
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config['db']);
         $this->session = new Session();
-        $this->products = (new $this->productClass);
         $userId = Application::$app->session->get('user');
         if ($userId) {
             $key = (new $this->userClass)->primaryKey();
