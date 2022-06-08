@@ -45,7 +45,7 @@ class AuthController extends Controller
             if ($user->validate() && $user->save()) {
                 $image->save();
                 Application::$app->session->setFlash('success', 'Successfully registered - Please enter your details to login');
-                $response->redirect('/registered');
+                $response->redirect('/register');
             } else {
                 $response->redirect('/registered');
                 Application::$app->session->setFlash('fail_register', $user->errors['user_email'][0]);

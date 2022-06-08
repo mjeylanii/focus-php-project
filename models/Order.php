@@ -15,8 +15,6 @@ class Order extends OrderModel
 
     public function save()
     {
-
-
         $this->user_id = Application::$app->session->get('user');
         $this->order_id = random_int(99999, 123123353);
         return parent::save();

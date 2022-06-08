@@ -110,7 +110,7 @@ if (\app\core\Application::isGuest()): ?>
                     if ($paymentArr) {
                         echo '<td>' . $paymentArr[0] . '</td>' .
                             '<td>' . $paymentArr[1] . '</td>' .
-                            '<td>' . $paymentArr[6] . '</td>' ;
+                            '<td>' . $paymentArr[6] . '</td>';
                     }
                     ?>
                 </tr>

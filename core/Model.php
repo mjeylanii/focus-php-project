@@ -98,7 +98,7 @@ abstract class Model
             self::RULE_MAX => 'Password maximum length must be {max}',
             self::RULE_MATCH => 'Password do not match',
             self::RULE_UNIQUE => "A record of this {} was already found",
-            self::RULE_EXISTS => "A record of this E-mail {user_email} was already found"
+            self::RULE_EXISTS => "A record of this E-mail <mark>{user_email}</mark> was already found"
         ];
     }
 
