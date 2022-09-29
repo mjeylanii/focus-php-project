@@ -78,7 +78,6 @@ abstract class DbModel extends Model
         } catch (\Exception $e) {
             Application::$app->session->setFlash("activesub", "User has active subscription - Cannot delete!");
             exit();
-
         }
         return $stmt->execute() ?? false;
     }
